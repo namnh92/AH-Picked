@@ -32,6 +32,7 @@ subscription OnCreateUser {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -40,6 +41,7 @@ subscription OnCreateUser {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -57,6 +59,7 @@ subscription OnUpdateUser {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -65,6 +68,7 @@ subscription OnUpdateUser {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -82,6 +86,7 @@ subscription OnDeleteUser {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -90,6 +95,7 @@ subscription OnDeleteUser {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -146,6 +152,7 @@ subscription OnCreateOrder {
       }
     }
     status
+    deadline
   }
 }
 subscription OnUpdateOrder {
@@ -199,6 +206,7 @@ subscription OnUpdateOrder {
       }
     }
     status
+    deadline
   }
 }
 subscription OnDeleteOrder {
@@ -252,6 +260,7 @@ subscription OnDeleteOrder {
       }
     }
     status
+    deadline
   }
 }
 subscription OnCreateLocation {
@@ -263,6 +272,7 @@ subscription OnCreateLocation {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -271,6 +281,7 @@ subscription OnCreateLocation {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -285,6 +296,7 @@ subscription OnUpdateLocation {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -293,6 +305,7 @@ subscription OnUpdateLocation {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -307,6 +320,7 @@ subscription OnDeleteLocation {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -315,6 +329,7 @@ subscription OnDeleteLocation {
         id
         name
         status
+        deadline
       }
       nextToken
     }

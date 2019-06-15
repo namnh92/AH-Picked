@@ -256,8 +256,8 @@ public struct DeleteUserInput: GraphQLMapConvertible {
 public struct CreateOrderInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID? = nil, name: String, status: OrderStatus? = nil, orderSentById: GraphQLID? = nil, orderReceivedById: GraphQLID? = nil, orderSentFromId: GraphQLID? = nil, orderSentToId: GraphQLID? = nil) {
-    graphQLMap = ["id": id, "name": name, "status": status, "orderSentById": orderSentById, "orderReceivedById": orderReceivedById, "orderSentFromId": orderSentFromId, "orderSentToId": orderSentToId]
+  public init(id: GraphQLID? = nil, name: String, status: OrderStatus? = nil, deadline: String? = nil, orderSentById: GraphQLID? = nil, orderReceivedById: GraphQLID? = nil, orderSentFromId: GraphQLID? = nil, orderSentToId: GraphQLID? = nil) {
+    graphQLMap = ["id": id, "name": name, "status": status, "deadline": deadline, "orderSentById": orderSentById, "orderReceivedById": orderReceivedById, "orderSentFromId": orderSentFromId, "orderSentToId": orderSentToId]
   }
 
   public var id: GraphQLID? {
@@ -284,6 +284,15 @@ public struct CreateOrderInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "status")
+    }
+  }
+
+  public var deadline: String? {
+    get {
+      return graphQLMap["deadline"] as! String?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "deadline")
     }
   }
 
@@ -327,8 +336,8 @@ public struct CreateOrderInput: GraphQLMapConvertible {
 public struct UpdateOrderInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID, name: String? = nil, status: OrderStatus? = nil, orderSentById: GraphQLID? = nil, orderReceivedById: GraphQLID? = nil, orderSentFromId: GraphQLID? = nil, orderSentToId: GraphQLID? = nil) {
-    graphQLMap = ["id": id, "name": name, "status": status, "orderSentById": orderSentById, "orderReceivedById": orderReceivedById, "orderSentFromId": orderSentFromId, "orderSentToId": orderSentToId]
+  public init(id: GraphQLID, name: String? = nil, status: OrderStatus? = nil, deadline: String? = nil, orderSentById: GraphQLID? = nil, orderReceivedById: GraphQLID? = nil, orderSentFromId: GraphQLID? = nil, orderSentToId: GraphQLID? = nil) {
+    graphQLMap = ["id": id, "name": name, "status": status, "deadline": deadline, "orderSentById": orderSentById, "orderReceivedById": orderReceivedById, "orderSentFromId": orderSentFromId, "orderSentToId": orderSentToId]
   }
 
   public var id: GraphQLID {
@@ -355,6 +364,15 @@ public struct UpdateOrderInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "status")
+    }
+  }
+
+  public var deadline: String? {
+    get {
+      return graphQLMap["deadline"] as! String?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "deadline")
     }
   }
 
@@ -822,8 +840,8 @@ public struct ModelUserFilterInput: GraphQLMapConvertible {
 public struct ModelOrderFilterInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: ModelIDFilterInput? = nil, name: ModelStringFilterInput? = nil, status: ModelOrderStatusFilterInput? = nil, and: [ModelOrderFilterInput?]? = nil, or: [ModelOrderFilterInput?]? = nil, not: ModelOrderFilterInput? = nil) {
-    graphQLMap = ["id": id, "name": name, "status": status, "and": and, "or": or, "not": not]
+  public init(id: ModelIDFilterInput? = nil, name: ModelStringFilterInput? = nil, status: ModelOrderStatusFilterInput? = nil, deadline: ModelStringFilterInput? = nil, and: [ModelOrderFilterInput?]? = nil, or: [ModelOrderFilterInput?]? = nil, not: ModelOrderFilterInput? = nil) {
+    graphQLMap = ["id": id, "name": name, "status": status, "deadline": deadline, "and": and, "or": or, "not": not]
   }
 
   public var id: ModelIDFilterInput? {
@@ -850,6 +868,15 @@ public struct ModelOrderFilterInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "status")
+    }
+  }
+
+  public var deadline: ModelStringFilterInput? {
+    get {
+      return graphQLMap["deadline"] as! ModelStringFilterInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "deadline")
     }
   }
 
@@ -1259,7 +1286,7 @@ public final class DeleteTodoMutation: GraphQLMutation {
 
 public final class CreateUserMutation: GraphQLMutation {
   public static let operationString =
-    "mutation CreateUser($input: CreateUserInput!) {\n  createUser(input: $input) {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "mutation CreateUser($input: CreateUserInput!) {\n  createUser(input: $input) {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public var input: CreateUserInput
 
@@ -1447,6 +1474,7 @@ public final class CreateUserMutation: GraphQLMutation {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -1455,8 +1483,8 @@ public final class CreateUserMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -1492,6 +1520,15 @@ public final class CreateUserMutation: GraphQLMutation {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -1551,6 +1588,7 @@ public final class CreateUserMutation: GraphQLMutation {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -1559,8 +1597,8 @@ public final class CreateUserMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -1598,6 +1636,15 @@ public final class CreateUserMutation: GraphQLMutation {
               snapshot.updateValue(newValue, forKey: "status")
             }
           }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
+            }
+          }
         }
       }
     }
@@ -1606,7 +1653,7 @@ public final class CreateUserMutation: GraphQLMutation {
 
 public final class UpdateUserMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpdateUser($input: UpdateUserInput!) {\n  updateUser(input: $input) {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "mutation UpdateUser($input: UpdateUserInput!) {\n  updateUser(input: $input) {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public var input: UpdateUserInput
 
@@ -1794,6 +1841,7 @@ public final class UpdateUserMutation: GraphQLMutation {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -1802,8 +1850,8 @@ public final class UpdateUserMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -1839,6 +1887,15 @@ public final class UpdateUserMutation: GraphQLMutation {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -1898,6 +1955,7 @@ public final class UpdateUserMutation: GraphQLMutation {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -1906,8 +1964,8 @@ public final class UpdateUserMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -1945,6 +2003,15 @@ public final class UpdateUserMutation: GraphQLMutation {
               snapshot.updateValue(newValue, forKey: "status")
             }
           }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
+            }
+          }
         }
       }
     }
@@ -1953,7 +2020,7 @@ public final class UpdateUserMutation: GraphQLMutation {
 
 public final class DeleteUserMutation: GraphQLMutation {
   public static let operationString =
-    "mutation DeleteUser($input: DeleteUserInput!) {\n  deleteUser(input: $input) {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "mutation DeleteUser($input: DeleteUserInput!) {\n  deleteUser(input: $input) {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public var input: DeleteUserInput
 
@@ -2141,6 +2208,7 @@ public final class DeleteUserMutation: GraphQLMutation {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -2149,8 +2217,8 @@ public final class DeleteUserMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -2186,6 +2254,15 @@ public final class DeleteUserMutation: GraphQLMutation {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -2245,6 +2322,7 @@ public final class DeleteUserMutation: GraphQLMutation {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -2253,8 +2331,8 @@ public final class DeleteUserMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -2292,6 +2370,15 @@ public final class DeleteUserMutation: GraphQLMutation {
               snapshot.updateValue(newValue, forKey: "status")
             }
           }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
+            }
+          }
         }
       }
     }
@@ -2300,7 +2387,7 @@ public final class DeleteUserMutation: GraphQLMutation {
 
 public final class CreateOrderMutation: GraphQLMutation {
   public static let operationString =
-    "mutation CreateOrder($input: CreateOrderInput!) {\n  createOrder(input: $input) {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n  }\n}"
+    "mutation CreateOrder($input: CreateOrderInput!) {\n  createOrder(input: $input) {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n    deadline\n  }\n}"
 
   public var input: CreateOrderInput
 
@@ -2350,6 +2437,7 @@ public final class CreateOrderMutation: GraphQLMutation {
         GraphQLField("sentFrom", type: .object(SentFrom.selections)),
         GraphQLField("sentTo", type: .object(SentTo.selections)),
         GraphQLField("status", type: .scalar(OrderStatus.self)),
+        GraphQLField("deadline", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -2358,8 +2446,8 @@ public final class CreateOrderMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil) {
-        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status])
+      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil, deadline: String? = nil) {
+        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status, "deadline": deadline])
       }
 
       public var __typename: String {
@@ -2431,6 +2519,15 @@ public final class CreateOrderMutation: GraphQLMutation {
         }
         set {
           snapshot.updateValue(newValue, forKey: "status")
+        }
+      }
+
+      public var deadline: String? {
+        get {
+          return snapshot["deadline"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "deadline")
         }
       }
 
@@ -3063,7 +3160,7 @@ public final class CreateOrderMutation: GraphQLMutation {
 
 public final class UpdateOrderMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpdateOrder($input: UpdateOrderInput!) {\n  updateOrder(input: $input) {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n  }\n}"
+    "mutation UpdateOrder($input: UpdateOrderInput!) {\n  updateOrder(input: $input) {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n    deadline\n  }\n}"
 
   public var input: UpdateOrderInput
 
@@ -3113,6 +3210,7 @@ public final class UpdateOrderMutation: GraphQLMutation {
         GraphQLField("sentFrom", type: .object(SentFrom.selections)),
         GraphQLField("sentTo", type: .object(SentTo.selections)),
         GraphQLField("status", type: .scalar(OrderStatus.self)),
+        GraphQLField("deadline", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -3121,8 +3219,8 @@ public final class UpdateOrderMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil) {
-        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status])
+      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil, deadline: String? = nil) {
+        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status, "deadline": deadline])
       }
 
       public var __typename: String {
@@ -3194,6 +3292,15 @@ public final class UpdateOrderMutation: GraphQLMutation {
         }
         set {
           snapshot.updateValue(newValue, forKey: "status")
+        }
+      }
+
+      public var deadline: String? {
+        get {
+          return snapshot["deadline"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "deadline")
         }
       }
 
@@ -3826,7 +3933,7 @@ public final class UpdateOrderMutation: GraphQLMutation {
 
 public final class DeleteOrderMutation: GraphQLMutation {
   public static let operationString =
-    "mutation DeleteOrder($input: DeleteOrderInput!) {\n  deleteOrder(input: $input) {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n  }\n}"
+    "mutation DeleteOrder($input: DeleteOrderInput!) {\n  deleteOrder(input: $input) {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n    deadline\n  }\n}"
 
   public var input: DeleteOrderInput
 
@@ -3876,6 +3983,7 @@ public final class DeleteOrderMutation: GraphQLMutation {
         GraphQLField("sentFrom", type: .object(SentFrom.selections)),
         GraphQLField("sentTo", type: .object(SentTo.selections)),
         GraphQLField("status", type: .scalar(OrderStatus.self)),
+        GraphQLField("deadline", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -3884,8 +3992,8 @@ public final class DeleteOrderMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil) {
-        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status])
+      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil, deadline: String? = nil) {
+        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status, "deadline": deadline])
       }
 
       public var __typename: String {
@@ -3957,6 +4065,15 @@ public final class DeleteOrderMutation: GraphQLMutation {
         }
         set {
           snapshot.updateValue(newValue, forKey: "status")
+        }
+      }
+
+      public var deadline: String? {
+        get {
+          return snapshot["deadline"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "deadline")
         }
       }
 
@@ -4589,7 +4706,7 @@ public final class DeleteOrderMutation: GraphQLMutation {
 
 public final class CreateLocationMutation: GraphQLMutation {
   public static let operationString =
-    "mutation CreateLocation($input: CreateLocationInput!) {\n  createLocation(input: $input) {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "mutation CreateLocation($input: CreateLocationInput!) {\n  createLocation(input: $input) {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public var input: CreateLocationInput
 
@@ -4747,6 +4864,7 @@ public final class CreateLocationMutation: GraphQLMutation {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -4755,8 +4873,8 @@ public final class CreateLocationMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -4792,6 +4910,15 @@ public final class CreateLocationMutation: GraphQLMutation {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -4851,6 +4978,7 @@ public final class CreateLocationMutation: GraphQLMutation {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -4859,8 +4987,8 @@ public final class CreateLocationMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -4898,6 +5026,15 @@ public final class CreateLocationMutation: GraphQLMutation {
               snapshot.updateValue(newValue, forKey: "status")
             }
           }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
+            }
+          }
         }
       }
     }
@@ -4906,7 +5043,7 @@ public final class CreateLocationMutation: GraphQLMutation {
 
 public final class UpdateLocationMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpdateLocation($input: UpdateLocationInput!) {\n  updateLocation(input: $input) {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "mutation UpdateLocation($input: UpdateLocationInput!) {\n  updateLocation(input: $input) {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public var input: UpdateLocationInput
 
@@ -5064,6 +5201,7 @@ public final class UpdateLocationMutation: GraphQLMutation {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -5072,8 +5210,8 @@ public final class UpdateLocationMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -5109,6 +5247,15 @@ public final class UpdateLocationMutation: GraphQLMutation {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -5168,6 +5315,7 @@ public final class UpdateLocationMutation: GraphQLMutation {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -5176,8 +5324,8 @@ public final class UpdateLocationMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -5215,6 +5363,15 @@ public final class UpdateLocationMutation: GraphQLMutation {
               snapshot.updateValue(newValue, forKey: "status")
             }
           }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
+            }
+          }
         }
       }
     }
@@ -5223,7 +5380,7 @@ public final class UpdateLocationMutation: GraphQLMutation {
 
 public final class DeleteLocationMutation: GraphQLMutation {
   public static let operationString =
-    "mutation DeleteLocation($input: DeleteLocationInput!) {\n  deleteLocation(input: $input) {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "mutation DeleteLocation($input: DeleteLocationInput!) {\n  deleteLocation(input: $input) {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public var input: DeleteLocationInput
 
@@ -5381,6 +5538,7 @@ public final class DeleteLocationMutation: GraphQLMutation {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -5389,8 +5547,8 @@ public final class DeleteLocationMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -5426,6 +5584,15 @@ public final class DeleteLocationMutation: GraphQLMutation {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -5485,6 +5652,7 @@ public final class DeleteLocationMutation: GraphQLMutation {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -5493,8 +5661,8 @@ public final class DeleteLocationMutation: GraphQLMutation {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -5530,6 +5698,15 @@ public final class DeleteLocationMutation: GraphQLMutation {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -5789,7 +5966,7 @@ public final class ListTodosQuery: GraphQLQuery {
 
 public final class GetUserQuery: GraphQLQuery {
   public static let operationString =
-    "query GetUser($id: ID!) {\n  getUser(id: $id) {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "query GetUser($id: ID!) {\n  getUser(id: $id) {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public var id: GraphQLID
 
@@ -5977,6 +6154,7 @@ public final class GetUserQuery: GraphQLQuery {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -5985,8 +6163,8 @@ public final class GetUserQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -6022,6 +6200,15 @@ public final class GetUserQuery: GraphQLQuery {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -6081,6 +6268,7 @@ public final class GetUserQuery: GraphQLQuery {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -6089,8 +6277,8 @@ public final class GetUserQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -6126,6 +6314,15 @@ public final class GetUserQuery: GraphQLQuery {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -6400,7 +6597,7 @@ public final class ListUsersQuery: GraphQLQuery {
 
 public final class GetOrderQuery: GraphQLQuery {
   public static let operationString =
-    "query GetOrder($id: ID!) {\n  getOrder(id: $id) {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n  }\n}"
+    "query GetOrder($id: ID!) {\n  getOrder(id: $id) {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n    deadline\n  }\n}"
 
   public var id: GraphQLID
 
@@ -6450,6 +6647,7 @@ public final class GetOrderQuery: GraphQLQuery {
         GraphQLField("sentFrom", type: .object(SentFrom.selections)),
         GraphQLField("sentTo", type: .object(SentTo.selections)),
         GraphQLField("status", type: .scalar(OrderStatus.self)),
+        GraphQLField("deadline", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -6458,8 +6656,8 @@ public final class GetOrderQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil) {
-        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status])
+      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil, deadline: String? = nil) {
+        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status, "deadline": deadline])
       }
 
       public var __typename: String {
@@ -6531,6 +6729,15 @@ public final class GetOrderQuery: GraphQLQuery {
         }
         set {
           snapshot.updateValue(newValue, forKey: "status")
+        }
+      }
+
+      public var deadline: String? {
+        get {
+          return snapshot["deadline"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "deadline")
         }
       }
 
@@ -7163,7 +7370,7 @@ public final class GetOrderQuery: GraphQLQuery {
 
 public final class ListOrdersQuery: GraphQLQuery {
   public static let operationString =
-    "query ListOrders($filter: ModelOrderFilterInput, $limit: Int, $nextToken: String) {\n  listOrders(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      name\n      sentBy {\n        __typename\n        id\n        firstName\n        familyName\n        email\n        password\n      }\n      receivedBy {\n        __typename\n        id\n        firstName\n        familyName\n        email\n        password\n      }\n      sentFrom {\n        __typename\n        id\n        name\n      }\n      sentTo {\n        __typename\n        id\n        name\n      }\n      status\n    }\n    nextToken\n  }\n}"
+    "query ListOrders($filter: ModelOrderFilterInput, $limit: Int, $nextToken: String) {\n  listOrders(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      name\n      sentBy {\n        __typename\n        id\n        firstName\n        familyName\n        email\n        password\n      }\n      receivedBy {\n        __typename\n        id\n        firstName\n        familyName\n        email\n        password\n      }\n      sentFrom {\n        __typename\n        id\n        name\n      }\n      sentTo {\n        __typename\n        id\n        name\n      }\n      status\n      deadline\n    }\n    nextToken\n  }\n}"
 
   public var filter: ModelOrderFilterInput?
   public var limit: Int?
@@ -7263,6 +7470,7 @@ public final class ListOrdersQuery: GraphQLQuery {
           GraphQLField("sentFrom", type: .object(SentFrom.selections)),
           GraphQLField("sentTo", type: .object(SentTo.selections)),
           GraphQLField("status", type: .scalar(OrderStatus.self)),
+          GraphQLField("deadline", type: .scalar(String.self)),
         ]
 
         public var snapshot: Snapshot
@@ -7271,8 +7479,8 @@ public final class ListOrdersQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil) {
-          self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status])
+        public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil, deadline: String? = nil) {
+          self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status, "deadline": deadline])
         }
 
         public var __typename: String {
@@ -7344,6 +7552,15 @@ public final class ListOrdersQuery: GraphQLQuery {
           }
           set {
             snapshot.updateValue(newValue, forKey: "status")
+          }
+        }
+
+        public var deadline: String? {
+          get {
+            return snapshot["deadline"] as? String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "deadline")
           }
         }
 
@@ -7601,7 +7818,7 @@ public final class ListOrdersQuery: GraphQLQuery {
 
 public final class GetLocationQuery: GraphQLQuery {
   public static let operationString =
-    "query GetLocation($id: ID!) {\n  getLocation(id: $id) {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "query GetLocation($id: ID!) {\n  getLocation(id: $id) {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public var id: GraphQLID
 
@@ -7759,6 +7976,7 @@ public final class GetLocationQuery: GraphQLQuery {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -7767,8 +7985,8 @@ public final class GetLocationQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -7804,6 +8022,15 @@ public final class GetLocationQuery: GraphQLQuery {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -7863,6 +8090,7 @@ public final class GetLocationQuery: GraphQLQuery {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -7871,8 +8099,8 @@ public final class GetLocationQuery: GraphQLQuery {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -7908,6 +8136,15 @@ public final class GetLocationQuery: GraphQLQuery {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -8428,7 +8665,7 @@ public final class OnDeleteTodoSubscription: GraphQLSubscription {
 
 public final class OnCreateUserSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnCreateUser {\n  onCreateUser {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "subscription OnCreateUser {\n  onCreateUser {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public init() {
   }
@@ -8609,6 +8846,7 @@ public final class OnCreateUserSubscription: GraphQLSubscription {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -8617,8 +8855,8 @@ public final class OnCreateUserSubscription: GraphQLSubscription {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -8654,6 +8892,15 @@ public final class OnCreateUserSubscription: GraphQLSubscription {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -8713,6 +8960,7 @@ public final class OnCreateUserSubscription: GraphQLSubscription {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -8721,8 +8969,8 @@ public final class OnCreateUserSubscription: GraphQLSubscription {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -8760,6 +9008,15 @@ public final class OnCreateUserSubscription: GraphQLSubscription {
               snapshot.updateValue(newValue, forKey: "status")
             }
           }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
+            }
+          }
         }
       }
     }
@@ -8768,7 +9025,7 @@ public final class OnCreateUserSubscription: GraphQLSubscription {
 
 public final class OnUpdateUserSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnUpdateUser {\n  onUpdateUser {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "subscription OnUpdateUser {\n  onUpdateUser {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public init() {
   }
@@ -8949,6 +9206,7 @@ public final class OnUpdateUserSubscription: GraphQLSubscription {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -8957,8 +9215,8 @@ public final class OnUpdateUserSubscription: GraphQLSubscription {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -8994,6 +9252,15 @@ public final class OnUpdateUserSubscription: GraphQLSubscription {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -9053,6 +9320,7 @@ public final class OnUpdateUserSubscription: GraphQLSubscription {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -9061,8 +9329,8 @@ public final class OnUpdateUserSubscription: GraphQLSubscription {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -9100,6 +9368,15 @@ public final class OnUpdateUserSubscription: GraphQLSubscription {
               snapshot.updateValue(newValue, forKey: "status")
             }
           }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
+            }
+          }
         }
       }
     }
@@ -9108,7 +9385,7 @@ public final class OnUpdateUserSubscription: GraphQLSubscription {
 
 public final class OnDeleteUserSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnDeleteUser {\n  onDeleteUser {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "subscription OnDeleteUser {\n  onDeleteUser {\n    __typename\n    id\n    firstName\n    familyName\n    email\n    password\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    receivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public init() {
   }
@@ -9289,6 +9566,7 @@ public final class OnDeleteUserSubscription: GraphQLSubscription {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -9297,8 +9575,8 @@ public final class OnDeleteUserSubscription: GraphQLSubscription {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -9334,6 +9612,15 @@ public final class OnDeleteUserSubscription: GraphQLSubscription {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -9393,6 +9680,7 @@ public final class OnDeleteUserSubscription: GraphQLSubscription {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -9401,8 +9689,8 @@ public final class OnDeleteUserSubscription: GraphQLSubscription {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -9440,6 +9728,15 @@ public final class OnDeleteUserSubscription: GraphQLSubscription {
               snapshot.updateValue(newValue, forKey: "status")
             }
           }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
+            }
+          }
         }
       }
     }
@@ -9448,7 +9745,7 @@ public final class OnDeleteUserSubscription: GraphQLSubscription {
 
 public final class OnCreateOrderSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnCreateOrder {\n  onCreateOrder {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n  }\n}"
+    "subscription OnCreateOrder {\n  onCreateOrder {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n    deadline\n  }\n}"
 
   public init() {
   }
@@ -9491,6 +9788,7 @@ public final class OnCreateOrderSubscription: GraphQLSubscription {
         GraphQLField("sentFrom", type: .object(SentFrom.selections)),
         GraphQLField("sentTo", type: .object(SentTo.selections)),
         GraphQLField("status", type: .scalar(OrderStatus.self)),
+        GraphQLField("deadline", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -9499,8 +9797,8 @@ public final class OnCreateOrderSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil) {
-        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status])
+      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil, deadline: String? = nil) {
+        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status, "deadline": deadline])
       }
 
       public var __typename: String {
@@ -9572,6 +9870,15 @@ public final class OnCreateOrderSubscription: GraphQLSubscription {
         }
         set {
           snapshot.updateValue(newValue, forKey: "status")
+        }
+      }
+
+      public var deadline: String? {
+        get {
+          return snapshot["deadline"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "deadline")
         }
       }
 
@@ -10204,7 +10511,7 @@ public final class OnCreateOrderSubscription: GraphQLSubscription {
 
 public final class OnUpdateOrderSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnUpdateOrder {\n  onUpdateOrder {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n  }\n}"
+    "subscription OnUpdateOrder {\n  onUpdateOrder {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n    deadline\n  }\n}"
 
   public init() {
   }
@@ -10247,6 +10554,7 @@ public final class OnUpdateOrderSubscription: GraphQLSubscription {
         GraphQLField("sentFrom", type: .object(SentFrom.selections)),
         GraphQLField("sentTo", type: .object(SentTo.selections)),
         GraphQLField("status", type: .scalar(OrderStatus.self)),
+        GraphQLField("deadline", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -10255,8 +10563,8 @@ public final class OnUpdateOrderSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil) {
-        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status])
+      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil, deadline: String? = nil) {
+        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status, "deadline": deadline])
       }
 
       public var __typename: String {
@@ -10328,6 +10636,15 @@ public final class OnUpdateOrderSubscription: GraphQLSubscription {
         }
         set {
           snapshot.updateValue(newValue, forKey: "status")
+        }
+      }
+
+      public var deadline: String? {
+        get {
+          return snapshot["deadline"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "deadline")
         }
       }
 
@@ -10960,7 +11277,7 @@ public final class OnUpdateOrderSubscription: GraphQLSubscription {
 
 public final class OnDeleteOrderSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnDeleteOrder {\n  onDeleteOrder {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n  }\n}"
+    "subscription OnDeleteOrder {\n  onDeleteOrder {\n    __typename\n    id\n    name\n    sentBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    receivedBy {\n      __typename\n      id\n      firstName\n      familyName\n      email\n      password\n      sentOrders {\n        __typename\n        nextToken\n      }\n      receivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentFrom {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    sentTo {\n      __typename\n      id\n      name\n      sentOrders {\n        __typename\n        nextToken\n      }\n      arrivedOrders {\n        __typename\n        nextToken\n      }\n    }\n    status\n    deadline\n  }\n}"
 
   public init() {
   }
@@ -11003,6 +11320,7 @@ public final class OnDeleteOrderSubscription: GraphQLSubscription {
         GraphQLField("sentFrom", type: .object(SentFrom.selections)),
         GraphQLField("sentTo", type: .object(SentTo.selections)),
         GraphQLField("status", type: .scalar(OrderStatus.self)),
+        GraphQLField("deadline", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -11011,8 +11329,8 @@ public final class OnDeleteOrderSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil) {
-        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status])
+      public init(id: GraphQLID, name: String, sentBy: SentBy? = nil, receivedBy: ReceivedBy? = nil, sentFrom: SentFrom? = nil, sentTo: SentTo? = nil, status: OrderStatus? = nil, deadline: String? = nil) {
+        self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "sentBy": sentBy.flatMap { $0.snapshot }, "receivedBy": receivedBy.flatMap { $0.snapshot }, "sentFrom": sentFrom.flatMap { $0.snapshot }, "sentTo": sentTo.flatMap { $0.snapshot }, "status": status, "deadline": deadline])
       }
 
       public var __typename: String {
@@ -11084,6 +11402,15 @@ public final class OnDeleteOrderSubscription: GraphQLSubscription {
         }
         set {
           snapshot.updateValue(newValue, forKey: "status")
+        }
+      }
+
+      public var deadline: String? {
+        get {
+          return snapshot["deadline"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "deadline")
         }
       }
 
@@ -11716,7 +12043,7 @@ public final class OnDeleteOrderSubscription: GraphQLSubscription {
 
 public final class OnCreateLocationSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnCreateLocation {\n  onCreateLocation {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "subscription OnCreateLocation {\n  onCreateLocation {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public init() {
   }
@@ -11867,6 +12194,7 @@ public final class OnCreateLocationSubscription: GraphQLSubscription {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -11875,8 +12203,8 @@ public final class OnCreateLocationSubscription: GraphQLSubscription {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -11912,6 +12240,15 @@ public final class OnCreateLocationSubscription: GraphQLSubscription {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -11971,6 +12308,7 @@ public final class OnCreateLocationSubscription: GraphQLSubscription {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -11979,8 +12317,8 @@ public final class OnCreateLocationSubscription: GraphQLSubscription {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -12018,6 +12356,15 @@ public final class OnCreateLocationSubscription: GraphQLSubscription {
               snapshot.updateValue(newValue, forKey: "status")
             }
           }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
+            }
+          }
         }
       }
     }
@@ -12026,7 +12373,7 @@ public final class OnCreateLocationSubscription: GraphQLSubscription {
 
 public final class OnUpdateLocationSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnUpdateLocation {\n  onUpdateLocation {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "subscription OnUpdateLocation {\n  onUpdateLocation {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public init() {
   }
@@ -12177,6 +12524,7 @@ public final class OnUpdateLocationSubscription: GraphQLSubscription {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -12185,8 +12533,8 @@ public final class OnUpdateLocationSubscription: GraphQLSubscription {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -12222,6 +12570,15 @@ public final class OnUpdateLocationSubscription: GraphQLSubscription {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -12281,6 +12638,7 @@ public final class OnUpdateLocationSubscription: GraphQLSubscription {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -12289,8 +12647,8 @@ public final class OnUpdateLocationSubscription: GraphQLSubscription {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -12328,6 +12686,15 @@ public final class OnUpdateLocationSubscription: GraphQLSubscription {
               snapshot.updateValue(newValue, forKey: "status")
             }
           }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
+            }
+          }
         }
       }
     }
@@ -12336,7 +12703,7 @@ public final class OnUpdateLocationSubscription: GraphQLSubscription {
 
 public final class OnDeleteLocationSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnDeleteLocation {\n  onDeleteLocation {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n      }\n      nextToken\n    }\n  }\n}"
+    "subscription OnDeleteLocation {\n  onDeleteLocation {\n    __typename\n    id\n    name\n    sentOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n    arrivedOrders {\n      __typename\n      items {\n        __typename\n        id\n        name\n        status\n        deadline\n      }\n      nextToken\n    }\n  }\n}"
 
   public init() {
   }
@@ -12487,6 +12854,7 @@ public final class OnDeleteLocationSubscription: GraphQLSubscription {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -12495,8 +12863,8 @@ public final class OnDeleteLocationSubscription: GraphQLSubscription {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -12532,6 +12900,15 @@ public final class OnDeleteLocationSubscription: GraphQLSubscription {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }
@@ -12591,6 +12968,7 @@ public final class OnDeleteLocationSubscription: GraphQLSubscription {
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("status", type: .scalar(OrderStatus.self)),
+            GraphQLField("deadline", type: .scalar(String.self)),
           ]
 
           public var snapshot: Snapshot
@@ -12599,8 +12977,8 @@ public final class OnDeleteLocationSubscription: GraphQLSubscription {
             self.snapshot = snapshot
           }
 
-          public init(id: GraphQLID, name: String, status: OrderStatus? = nil) {
-            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status])
+          public init(id: GraphQLID, name: String, status: OrderStatus? = nil, deadline: String? = nil) {
+            self.init(snapshot: ["__typename": "Order", "id": id, "name": name, "status": status, "deadline": deadline])
           }
 
           public var __typename: String {
@@ -12636,6 +13014,15 @@ public final class OnDeleteLocationSubscription: GraphQLSubscription {
             }
             set {
               snapshot.updateValue(newValue, forKey: "status")
+            }
+          }
+
+          public var deadline: String? {
+            get {
+              return snapshot["deadline"] as? String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "deadline")
             }
           }
         }

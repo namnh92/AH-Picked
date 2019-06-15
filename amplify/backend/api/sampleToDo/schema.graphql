@@ -22,6 +22,7 @@ type Order @model {
   sentFrom: Location @connection(name: "sentFromLocation")
   sentTo: Location @connection(name: "sentToLocation")
   status: OrderStatus
+  deadline: AWSDateTime
 }
 
 type Location @model {
@@ -32,8 +33,8 @@ type Location @model {
 }
 
 enum OrderStatus {
-  registered
-  arrived
-  recieved
-  returned
+  registered # when a sender registers a order
+  arrived # when a order arrives to the location
+  recieved # when a reciever received a order
+  returned # when order was not recieved and got returned
 }

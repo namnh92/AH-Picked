@@ -32,6 +32,7 @@ mutation CreateUser($input: CreateUserInput!) {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -40,6 +41,7 @@ mutation CreateUser($input: CreateUserInput!) {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -57,6 +59,7 @@ mutation UpdateUser($input: UpdateUserInput!) {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -65,6 +68,7 @@ mutation UpdateUser($input: UpdateUserInput!) {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -82,6 +86,7 @@ mutation DeleteUser($input: DeleteUserInput!) {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -90,6 +95,7 @@ mutation DeleteUser($input: DeleteUserInput!) {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -146,6 +152,7 @@ mutation CreateOrder($input: CreateOrderInput!) {
       }
     }
     status
+    deadline
   }
 }
 mutation UpdateOrder($input: UpdateOrderInput!) {
@@ -199,6 +206,7 @@ mutation UpdateOrder($input: UpdateOrderInput!) {
       }
     }
     status
+    deadline
   }
 }
 mutation DeleteOrder($input: DeleteOrderInput!) {
@@ -252,6 +260,7 @@ mutation DeleteOrder($input: DeleteOrderInput!) {
       }
     }
     status
+    deadline
   }
 }
 mutation CreateLocation($input: CreateLocationInput!) {
@@ -263,6 +272,7 @@ mutation CreateLocation($input: CreateLocationInput!) {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -271,6 +281,7 @@ mutation CreateLocation($input: CreateLocationInput!) {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -285,6 +296,7 @@ mutation UpdateLocation($input: UpdateLocationInput!) {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -293,6 +305,7 @@ mutation UpdateLocation($input: UpdateLocationInput!) {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -307,6 +320,7 @@ mutation DeleteLocation($input: DeleteLocationInput!) {
         id
         name
         status
+        deadline
       }
       nextToken
     }
@@ -315,6 +329,7 @@ mutation DeleteLocation($input: DeleteLocationInput!) {
         id
         name
         status
+        deadline
       }
       nextToken
     }
