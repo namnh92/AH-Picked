@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "Group 5 + Group 5 Copy + Group 3 + Oval + Oval Copy 3 + Rectangle + Rectangle + Rectangle Copy 3 + Rectangle Copy 2 + Combined Shape + Rectangle + Group 4 + Group 4 Copy Mask Copy Copy.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Group 5 + Group 5 Copy + Group 3 + Oval + Oval Copy 3 + Rectangle + Rectangle + Rectangle Copy 3 + Rectangle Copy 2 + Combined Shape + Rectangle + Group 4 + Group 4 Copy Mask Copy Copy@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Group 5 + Group 5 Copy + Group 3 + Oval + Oval Copy 3 + Rectangle + Rectangle + Rectangle Copy 3 + Rectangle Copy 2 + Combined Shape + Rectangle + Group 4 + Group 4 Copy Mask Copy Copy@3x.png",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

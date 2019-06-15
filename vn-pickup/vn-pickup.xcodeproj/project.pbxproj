@@ -32,6 +32,43 @@
 		CB48287F22B4E01C002742D4 /* mutations.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CB48287922B4E01C002742D4 /* mutations.graphql */; };
 		CB48288022B4E01C002742D4 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = CB48287A22B4E01C002742D4 /* schema.json */; };
 		CB48288722B4FBA8002742D4 /* IndicatiorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48288622B4FBA8002742D4 /* IndicatiorView.swift */; };
+		CB48288A22B504F7002742D4 /* FacebookLoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48288922B504F7002742D4 /* FacebookLoginServices.swift */; };
+		CB48288C22B50511002742D4 /* LoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48288B22B50511002742D4 /* LoginProtocol.swift */; };
+		CB48288E22B507E0002742D4 /* UserProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48288D22B507E0002742D4 /* UserProfileEntity.swift */; };
+		CB48289022B525E1002742D4 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48288F22B525E1002742D4 /* RootTabBarController.swift */; };
+		CB48289422B527DD002742D4 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48289222B527DD002742D4 /* HistoryVC.swift */; };
+		CB48289522B527DD002742D4 /* HistoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB48289322B527DD002742D4 /* HistoryVC.xib */; };
+		CB48289922B52A42002742D4 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48289822B52A42002742D4 /* UIImageView+Extension.swift */; };
+		CB48289F22B52D81002742D4 /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48289D22B52D81002742D4 /* PaymentVC.swift */; };
+		CB4828A022B52D81002742D4 /* PaymentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB48289E22B52D81002742D4 /* PaymentVC.xib */; };
+		CB4828A322B52D90002742D4 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4828A122B52D90002742D4 /* AccountVC.swift */; };
+		CB4828A422B52D90002742D4 /* AccountVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4828A222B52D90002742D4 /* AccountVC.xib */; };
+		CB4828A722B52DA0002742D4 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4828A522B52DA0002742D4 /* NotificationVC.swift */; };
+		CB4828A822B52DA0002742D4 /* NotificationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4828A622B52DA0002742D4 /* NotificationVC.xib */; };
+		CB4828AC22B536E0002742D4 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4828AA22B536E0002742D4 /* OrderCell.swift */; };
+		CB4828AD22B536E0002742D4 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4828AB22B536E0002742D4 /* OrderCell.xib */; };
+		CB4828B522B53E51002742D4 /* OrderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4828B322B53E51002742D4 /* OrderDetailVC.swift */; };
+		CB4828B622B53E51002742D4 /* OrderDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4828B422B53E51002742D4 /* OrderDetailVC.xib */; };
+		CB9DAAA522B555A10081513E /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9222B555A10081513E /* Poppins-ExtraLight.ttf */; };
+		CB9DAAA622B555A10081513E /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9322B555A10081513E /* Poppins-ThinItalic.ttf */; };
+		CB9DAAA722B555A10081513E /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9422B555A10081513E /* Poppins-ExtraLightItalic.ttf */; };
+		CB9DAAA822B555A10081513E /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9522B555A10081513E /* Poppins-BoldItalic.ttf */; };
+		CB9DAAA922B555A10081513E /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9622B555A10081513E /* Poppins-Light.ttf */; };
+		CB9DAAAA22B555A10081513E /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9722B555A10081513E /* Poppins-Medium.ttf */; };
+		CB9DAAAB22B555A10081513E /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9822B555A10081513E /* Poppins-SemiBoldItalic.ttf */; };
+		CB9DAAAC22B555A10081513E /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9922B555A10081513E /* Poppins-ExtraBoldItalic.ttf */; };
+		CB9DAAAD22B555A10081513E /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9A22B555A10081513E /* Poppins-ExtraBold.ttf */; };
+		CB9DAAAE22B555A10081513E /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9B22B555A10081513E /* Poppins-BlackItalic.ttf */; };
+		CB9DAAAF22B555A10081513E /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9C22B555A10081513E /* OFL.txt */; };
+		CB9DAAB022B555A10081513E /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9D22B555A10081513E /* Poppins-Regular.ttf */; };
+		CB9DAAB122B555A10081513E /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9E22B555A10081513E /* Poppins-LightItalic.ttf */; };
+		CB9DAAB222B555A10081513E /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAA9F22B555A10081513E /* Poppins-Bold.ttf */; };
+		CB9DAAB322B555A10081513E /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAAA022B555A10081513E /* Poppins-Black.ttf */; };
+		CB9DAAB422B555A10081513E /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAAA122B555A10081513E /* Poppins-Thin.ttf */; };
+		CB9DAAB522B555A10081513E /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAAA222B555A10081513E /* Poppins-SemiBold.ttf */; };
+		CB9DAAB622B555A10081513E /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAAA322B555A10081513E /* Poppins-Italic.ttf */; };
+		CB9DAAB722B555A10081513E /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAAA422B555A10081513E /* Poppins-MediumItalic.ttf */; };
+		CB9DAAB922B5576A0081513E /* DashLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9DAAB822B5576A0081513E /* DashLineView.swift */; };
 		CBAEE78022B4C32600424752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAEE77F22B4C32600424752 /* AppDelegate.swift */; };
 		CBAEE78722B4C32700424752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBAEE78622B4C32700424752 /* Assets.xcassets */; };
 		CBAEE78A22B4C32700424752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBAEE78822B4C32700424752 /* LaunchScreen.storyboard */; };
@@ -65,6 +102,44 @@
 		CB48287922B4E01C002742D4 /* mutations.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mutations.graphql; sourceTree = "<group>"; };
 		CB48287A22B4E01C002742D4 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		CB48288622B4FBA8002742D4 /* IndicatiorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatiorView.swift; sourceTree = "<group>"; };
+		CB48288922B504F7002742D4 /* FacebookLoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginServices.swift; sourceTree = "<group>"; };
+		CB48288B22B50511002742D4 /* LoginProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocol.swift; sourceTree = "<group>"; };
+		CB48288D22B507E0002742D4 /* UserProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEntity.swift; sourceTree = "<group>"; };
+		CB48288F22B525E1002742D4 /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
+		CB48289222B527DD002742D4 /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
+		CB48289322B527DD002742D4 /* HistoryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryVC.xib; sourceTree = "<group>"; };
+		CB48289822B52A42002742D4 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		CB48289D22B52D81002742D4 /* PaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
+		CB48289E22B52D81002742D4 /* PaymentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentVC.xib; sourceTree = "<group>"; };
+		CB4828A122B52D90002742D4 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		CB4828A222B52D90002742D4 /* AccountVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountVC.xib; sourceTree = "<group>"; };
+		CB4828A522B52DA0002742D4 /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
+		CB4828A622B52DA0002742D4 /* NotificationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationVC.xib; sourceTree = "<group>"; };
+		CB4828AA22B536E0002742D4 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		CB4828AB22B536E0002742D4 /* OrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
+		CB4828B322B53E51002742D4 /* OrderDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailVC.swift; sourceTree = "<group>"; };
+		CB4828B422B53E51002742D4 /* OrderDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailVC.xib; sourceTree = "<group>"; };
+		CB4828B922B5500E002742D4 /* vn-pickup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "vn-pickup.entitlements"; sourceTree = "<group>"; };
+		CB9DAA9222B555A10081513E /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		CB9DAA9322B555A10081513E /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
+		CB9DAA9422B555A10081513E /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		CB9DAA9522B555A10081513E /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
+		CB9DAA9622B555A10081513E /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		CB9DAA9722B555A10081513E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		CB9DAA9822B555A10081513E /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		CB9DAA9922B555A10081513E /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		CB9DAA9A22B555A10081513E /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		CB9DAA9B22B555A10081513E /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
+		CB9DAA9C22B555A10081513E /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		CB9DAA9D22B555A10081513E /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		CB9DAA9E22B555A10081513E /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
+		CB9DAA9F22B555A10081513E /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		CB9DAAA022B555A10081513E /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
+		CB9DAAA122B555A10081513E /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		CB9DAAA222B555A10081513E /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		CB9DAAA322B555A10081513E /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
+		CB9DAAA422B555A10081513E /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
+		CB9DAAB822B5576A0081513E /* DashLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashLineView.swift; sourceTree = "<group>"; };
 		CBAEE77C22B4C32600424752 /* vn-pickup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vn-pickup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBAEE77F22B4C32600424752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBAEE78622B4C32700424752 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,9 +180,15 @@
 		CB48283E22B4CA00002742D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CB4828B222B53E37002742D4 /* Orders */,
+				CB48289C22B52D6C002742D4 /* Payment */,
+				CB48289B22B52D5B002742D4 /* Account */,
+				CB48289A22B52D4E002742D4 /* Notification */,
+				CB48289122B527C5002742D4 /* History */,
 				CB48285122B4D0F2002742D4 /* Login */,
-				CB48284422B4CA79002742D4 /* Base */,
 				CB48284322B4CA64002742D4 /* Main */,
+				CB48284422B4CA79002742D4 /* Base */,
+				CB48288F22B525E1002742D4 /* RootTabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -122,6 +203,7 @@
 		CB48284022B4CA18002742D4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CB48288D22B507E0002742D4 /* UserProfileEntity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -129,6 +211,7 @@
 		CB48284122B4CA1F002742D4 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				CB9DAA9022B555910081513E /* Fonts */,
 				CBAEE78622B4C32700424752 /* Assets.xcassets */,
 			);
 			path = Resouces;
@@ -148,6 +231,7 @@
 		CB48284322B4CA64002742D4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				CB4828A922B536C1002742D4 /* Cells */,
 				CB48284722B4CA9D002742D4 /* MainVC.swift */,
 				CB48284822B4CA9D002742D4 /* MainVC.xib */,
 			);
@@ -165,6 +249,7 @@
 		CB48284B22B4CAC5002742D4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CB48288822B50486002742D4 /* Login */,
 				CB48284C22B4CAD8002742D4 /* SystemBoots.swift */,
 			);
 			path = Services;
@@ -206,6 +291,7 @@
 				CB48285A22B4D3E0002742D4 /* ShadowView.swift */,
 				CB48285C22B4D3F5002742D4 /* GradientView.swift */,
 				CB48288622B4FBA8002742D4 /* IndicatiorView.swift */,
+				CB9DAAB822B5576A0081513E /* DashLineView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -224,6 +310,7 @@
 				CB48285622B4D33E002742D4 /* UIView+Extension.swift */,
 				CB48286222B4D4CA002742D4 /* UITableView+Extension.swift */,
 				CB48286422B4D50E002742D4 /* UITableViewCell+Extension.swift */,
+				CB48289822B52A42002742D4 /* UIImageView+Extension.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -275,6 +362,103 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		CB48288822B50486002742D4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CB48288922B504F7002742D4 /* FacebookLoginServices.swift */,
+				CB48288B22B50511002742D4 /* LoginProtocol.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		CB48289122B527C5002742D4 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				CB48289222B527DD002742D4 /* HistoryVC.swift */,
+				CB48289322B527DD002742D4 /* HistoryVC.xib */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		CB48289A22B52D4E002742D4 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				CB4828A522B52DA0002742D4 /* NotificationVC.swift */,
+				CB4828A622B52DA0002742D4 /* NotificationVC.xib */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		CB48289B22B52D5B002742D4 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				CB4828A122B52D90002742D4 /* AccountVC.swift */,
+				CB4828A222B52D90002742D4 /* AccountVC.xib */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		CB48289C22B52D6C002742D4 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				CB48289D22B52D81002742D4 /* PaymentVC.swift */,
+				CB48289E22B52D81002742D4 /* PaymentVC.xib */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		CB4828A922B536C1002742D4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CB4828AA22B536E0002742D4 /* OrderCell.swift */,
+				CB4828AB22B536E0002742D4 /* OrderCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CB4828B222B53E37002742D4 /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				CB4828B322B53E51002742D4 /* OrderDetailVC.swift */,
+				CB4828B422B53E51002742D4 /* OrderDetailVC.xib */,
+			);
+			path = Orders;
+			sourceTree = "<group>";
+		};
+		CB9DAA9022B555910081513E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CB9DAA9122B555A10081513E /* Poppins */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CB9DAA9122B555A10081513E /* Poppins */ = {
+			isa = PBXGroup;
+			children = (
+				CB9DAA9222B555A10081513E /* Poppins-ExtraLight.ttf */,
+				CB9DAA9322B555A10081513E /* Poppins-ThinItalic.ttf */,
+				CB9DAA9422B555A10081513E /* Poppins-ExtraLightItalic.ttf */,
+				CB9DAA9522B555A10081513E /* Poppins-BoldItalic.ttf */,
+				CB9DAA9622B555A10081513E /* Poppins-Light.ttf */,
+				CB9DAA9722B555A10081513E /* Poppins-Medium.ttf */,
+				CB9DAA9822B555A10081513E /* Poppins-SemiBoldItalic.ttf */,
+				CB9DAA9922B555A10081513E /* Poppins-ExtraBoldItalic.ttf */,
+				CB9DAA9A22B555A10081513E /* Poppins-ExtraBold.ttf */,
+				CB9DAA9B22B555A10081513E /* Poppins-BlackItalic.ttf */,
+				CB9DAA9C22B555A10081513E /* OFL.txt */,
+				CB9DAA9D22B555A10081513E /* Poppins-Regular.ttf */,
+				CB9DAA9E22B555A10081513E /* Poppins-LightItalic.ttf */,
+				CB9DAA9F22B555A10081513E /* Poppins-Bold.ttf */,
+				CB9DAAA022B555A10081513E /* Poppins-Black.ttf */,
+				CB9DAAA122B555A10081513E /* Poppins-Thin.ttf */,
+				CB9DAAA222B555A10081513E /* Poppins-SemiBold.ttf */,
+				CB9DAAA322B555A10081513E /* Poppins-Italic.ttf */,
+				CB9DAAA422B555A10081513E /* Poppins-MediumItalic.ttf */,
+			);
+			path = Poppins;
+			sourceTree = "<group>";
+		};
 		CBAEE77322B4C32600424752 = {
 			isa = PBXGroup;
 			children = (
@@ -296,11 +480,12 @@
 		CBAEE77E22B4C32600424752 /* vn-pickup */ = {
 			isa = PBXGroup;
 			children = (
-				CB48288122B4FA75002742D4 /* Networking */,
+				CB4828B922B5500E002742D4 /* vn-pickup.entitlements */,
+				CB48284222B4CA2C002742D4 /* Application */,
 				CB48287322B4E013002742D4 /* AWS */,
+				CB48288122B4FA75002742D4 /* Networking */,
 				CB48286622B4D553002742D4 /* Constant */,
 				CB48285822B4D3A5002742D4 /* Libraries */,
-				CB48284222B4CA2C002742D4 /* Application */,
 				CB48284122B4CA1F002742D4 /* Resouces */,
 				CB48284022B4CA18002742D4 /* Models */,
 				CB48283F22B4CA0A002742D4 /* Views */,
@@ -343,6 +528,11 @@
 				TargetAttributes = {
 					CBAEE77B22B4C32600424752 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -369,14 +559,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB4828AD22B536E0002742D4 /* OrderCell.xib in Resources */,
 				CBAEE78A22B4C32700424752 /* LaunchScreen.storyboard in Resources */,
 				CB48287E22B4E01C002742D4 /* queries.graphql in Resources */,
+				CB9DAAB022B555A10081513E /* Poppins-Regular.ttf in Resources */,
 				CB48287C22B4E01C002742D4 /* awsconfiguration.json in Resources */,
+				CB9DAAAD22B555A10081513E /* Poppins-ExtraBold.ttf in Resources */,
+				CB9DAAA822B555A10081513E /* Poppins-BoldItalic.ttf in Resources */,
+				CB9DAAA522B555A10081513E /* Poppins-ExtraLight.ttf in Resources */,
+				CB9DAAA622B555A10081513E /* Poppins-ThinItalic.ttf in Resources */,
+				CB9DAAAF22B555A10081513E /* OFL.txt in Resources */,
 				CB48284A22B4CA9D002742D4 /* MainVC.xib in Resources */,
+				CB9DAAB722B555A10081513E /* Poppins-MediumItalic.ttf in Resources */,
+				CB9DAAB222B555A10081513E /* Poppins-Bold.ttf in Resources */,
 				CB48287D22B4E01C002742D4 /* subscriptions.graphql in Resources */,
+				CB4828A022B52D81002742D4 /* PaymentVC.xib in Resources */,
 				CB48288022B4E01C002742D4 /* schema.json in Resources */,
+				CB9DAAAB22B555A10081513E /* Poppins-SemiBoldItalic.ttf in Resources */,
+				CB9DAAB422B555A10081513E /* Poppins-Thin.ttf in Resources */,
+				CB9DAAA922B555A10081513E /* Poppins-Light.ttf in Resources */,
+				CB9DAAB622B555A10081513E /* Poppins-Italic.ttf in Resources */,
+				CB4828A822B52DA0002742D4 /* NotificationVC.xib in Resources */,
+				CB4828B622B53E51002742D4 /* OrderDetailVC.xib in Resources */,
+				CB9DAAA722B555A10081513E /* Poppins-ExtraLightItalic.ttf in Resources */,
+				CB9DAAB522B555A10081513E /* Poppins-SemiBold.ttf in Resources */,
+				CB9DAAAE22B555A10081513E /* Poppins-BlackItalic.ttf in Resources */,
+				CB9DAAAA22B555A10081513E /* Poppins-Medium.ttf in Resources */,
 				CB48285522B4D108002742D4 /* LoginVC.xib in Resources */,
+				CB4828A422B52D90002742D4 /* AccountVC.xib in Resources */,
+				CB9DAAB322B555A10081513E /* Poppins-Black.ttf in Resources */,
+				CB9DAAB122B555A10081513E /* Poppins-LightItalic.ttf in Resources */,
+				CB48289522B527DD002742D4 /* HistoryVC.xib in Resources */,
 				CB48287F22B4E01C002742D4 /* mutations.graphql in Resources */,
+				CB9DAAAC22B555A10081513E /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				CBAEE78722B4C32700424752 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,23 +646,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB48286322B4D4CA002742D4 /* UITableView+Extension.swift in Sources */,
+				CB4828A722B52DA0002742D4 /* NotificationVC.swift in Sources */,
+				CB4828AC22B536E0002742D4 /* OrderCell.swift in Sources */,
 				CB48286C22B4D5A3002742D4 /* Colors.swift in Sources */,
+				CB4828B522B53E51002742D4 /* OrderDetailVC.swift in Sources */,
+				CB48288A22B504F7002742D4 /* FacebookLoginServices.swift in Sources */,
 				CB48284922B4CA9D002742D4 /* MainVC.swift in Sources */,
 				CB48286022B4D453002742D4 /* GradientLayer.swift in Sources */,
 				CB48288722B4FBA8002742D4 /* IndicatiorView.swift in Sources */,
 				CB48285722B4D33E002742D4 /* UIView+Extension.swift in Sources */,
 				CB48284D22B4CAD8002742D4 /* SystemBoots.swift in Sources */,
+				CB48289F22B52D81002742D4 /* PaymentVC.swift in Sources */,
 				CB48285422B4D108002742D4 /* LoginVC.swift in Sources */,
+				CB48289422B527DD002742D4 /* HistoryVC.swift in Sources */,
 				CB48285B22B4D3E0002742D4 /* ShadowView.swift in Sources */,
 				CB48286A22B4D571002742D4 /* Constants.swift in Sources */,
 				CB48286522B4D50E002742D4 /* UITableViewCell+Extension.swift in Sources */,
 				CB48284622B4CA8F002742D4 /* BaseVC.swift in Sources */,
 				CB48285022B4CD74002742D4 /* UIViewController+Extension.swift in Sources */,
+				CB48288E22B507E0002742D4 /* UserProfileEntity.swift in Sources */,
+				CB9DAAB922B5576A0081513E /* DashLineView.swift in Sources */,
+				CB48289922B52A42002742D4 /* UIImageView+Extension.swift in Sources */,
 				CB48286F22B4D5E6002742D4 /* UIColor+Extentsion.swift in Sources */,
 				CB48286822B4D568002742D4 /* EnumTypes.swift in Sources */,
+				CB4828A322B52D90002742D4 /* AccountVC.swift in Sources */,
 				CBAEE78022B4C32600424752 /* AppDelegate.swift in Sources */,
+				CB48288C22B50511002742D4 /* LoginProtocol.swift in Sources */,
 				CB48287B22B4E01C002742D4 /* API.swift in Sources */,
 				CB48285D22B4D3F5002742D4 /* GradientView.swift in Sources */,
+				CB48289022B525E1002742D4 /* RootTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +813,7 @@
 			baseConfigurationReference = 2ABB69A1D57B6AA47123D8F5 /* Pods-vn-pickup.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "vn-pickup/vn-pickup.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NX8T6CSL5;
 				INFOPLIST_FILE = "$(SRCROOT)/vn-pickup/Application/Info.plist";
@@ -594,7 +822,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "namnh.vn-pickup";
+				PRODUCT_BUNDLE_IDENTIFIER = "oh.we.vn-pickup";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -606,6 +834,7 @@
 			baseConfigurationReference = 8A6AC1FAAC8FCE18215EF25B /* Pods-vn-pickup.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "vn-pickup/vn-pickup.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NX8T6CSL5;
 				INFOPLIST_FILE = "$(SRCROOT)/vn-pickup/Application/Info.plist";
@@ -614,7 +843,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "namnh.vn-pickup";
+				PRODUCT_BUNDLE_IDENTIFIER = "oh.we.vn-pickup";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

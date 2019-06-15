@@ -22,11 +22,16 @@ class BaseVC: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appSyncClient = appDelegate.appSyncClient
         
+        setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.isHidden = false
+    }
+    
+    func setupView() {
+        
     }
 }
