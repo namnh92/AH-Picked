@@ -13,6 +13,8 @@ class BaseVC: UIViewController {
 
     //Reference AppSync client
     var appSyncClient: AWSAppSyncClient?
+    //Set a variable to discard at the class level
+    var discard: Cancellable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
