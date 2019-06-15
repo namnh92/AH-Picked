@@ -7,5 +7,11 @@
 				"securityType": "API_KEY"
 			}
 		}
+	},
+	"auth": {
+		"ahpicked76c4d490": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
 	}
 }

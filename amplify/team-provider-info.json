@@ -9,6 +9,11 @@
             "UnauthRoleName": "ah-picked-ahpicked-20190615141706-unauthRole",
             "StackName": "ah-picked-ahpicked-20190615141706",
             "StackId": "arn:aws:cloudformation:ap-southeast-1:696607598426:stack/ah-picked-ahpicked-20190615141706/95cc9320-8f3d-11e9-9d84-0a97a1834e8a"
+        },
+        "categories": {
+            "auth": {
+                "ahpicked76c4d490": {}
+            }
         }
     }
 }
