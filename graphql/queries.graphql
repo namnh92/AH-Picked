@@ -33,6 +33,7 @@ query GetUser($id: ID!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -42,6 +43,7 @@ query GetUser($id: ID!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -123,6 +125,7 @@ query GetOrder($id: ID!) {
     }
     status
     deadline
+    arrivalDate
   }
 }
 query ListOrders(
@@ -160,6 +163,7 @@ query ListOrders(
       }
       status
       deadline
+      arrivalDate
     }
     nextToken
   }
@@ -175,6 +179,7 @@ query GetLocation($id: ID!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -184,6 +189,7 @@ query GetLocation($id: ID!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }

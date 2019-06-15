@@ -33,6 +33,7 @@ mutation CreateUser($input: CreateUserInput!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -42,6 +43,7 @@ mutation CreateUser($input: CreateUserInput!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -60,6 +62,7 @@ mutation UpdateUser($input: UpdateUserInput!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -69,6 +72,7 @@ mutation UpdateUser($input: UpdateUserInput!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -87,6 +91,7 @@ mutation DeleteUser($input: DeleteUserInput!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -96,6 +101,7 @@ mutation DeleteUser($input: DeleteUserInput!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -155,6 +161,7 @@ mutation CreateOrder($input: CreateOrderInput!) {
     }
     status
     deadline
+    arrivalDate
   }
 }
 mutation UpdateOrder($input: UpdateOrderInput!) {
@@ -211,6 +218,7 @@ mutation UpdateOrder($input: UpdateOrderInput!) {
     }
     status
     deadline
+    arrivalDate
   }
 }
 mutation DeleteOrder($input: DeleteOrderInput!) {
@@ -267,6 +275,7 @@ mutation DeleteOrder($input: DeleteOrderInput!) {
     }
     status
     deadline
+    arrivalDate
   }
 }
 mutation CreateLocation($input: CreateLocationInput!) {
@@ -280,6 +289,7 @@ mutation CreateLocation($input: CreateLocationInput!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -289,6 +299,7 @@ mutation CreateLocation($input: CreateLocationInput!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -305,6 +316,7 @@ mutation UpdateLocation($input: UpdateLocationInput!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -314,6 +326,7 @@ mutation UpdateLocation($input: UpdateLocationInput!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -330,6 +343,7 @@ mutation DeleteLocation($input: DeleteLocationInput!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -339,6 +353,7 @@ mutation DeleteLocation($input: DeleteLocationInput!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
