@@ -20,3 +20,318 @@ mutation DeleteTodo($input: DeleteTodoInput!) {
     description
   }
 }
+mutation CreateUser($input: CreateUserInput!) {
+  createUser(input: $input) {
+    id
+    firstName
+    familyName
+    email
+    password
+    sentOrders {
+      items {
+        id
+        name
+        status
+        deadline
+      }
+      nextToken
+    }
+    receivedOrders {
+      items {
+        id
+        name
+        status
+        deadline
+      }
+      nextToken
+    }
+  }
+}
+mutation UpdateUser($input: UpdateUserInput!) {
+  updateUser(input: $input) {
+    id
+    firstName
+    familyName
+    email
+    password
+    sentOrders {
+      items {
+        id
+        name
+        status
+        deadline
+      }
+      nextToken
+    }
+    receivedOrders {
+      items {
+        id
+        name
+        status
+        deadline
+      }
+      nextToken
+    }
+  }
+}
+mutation DeleteUser($input: DeleteUserInput!) {
+  deleteUser(input: $input) {
+    id
+    firstName
+    familyName
+    email
+    password
+    sentOrders {
+      items {
+        id
+        name
+        status
+        deadline
+      }
+      nextToken
+    }
+    receivedOrders {
+      items {
+        id
+        name
+        status
+        deadline
+      }
+      nextToken
+    }
+  }
+}
+mutation CreateOrder($input: CreateOrderInput!) {
+  createOrder(input: $input) {
+    id
+    name
+    sentBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    receivedBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    sentFrom {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    sentTo {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    status
+    deadline
+  }
+}
+mutation UpdateOrder($input: UpdateOrderInput!) {
+  updateOrder(input: $input) {
+    id
+    name
+    sentBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    receivedBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    sentFrom {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    sentTo {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    status
+    deadline
+  }
+}
+mutation DeleteOrder($input: DeleteOrderInput!) {
+  deleteOrder(input: $input) {
+    id
+    name
+    sentBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    receivedBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    sentFrom {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    sentTo {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    status
+    deadline
+  }
+}
+mutation CreateLocation($input: CreateLocationInput!) {
+  createLocation(input: $input) {
+    id
+    name
+    sentOrders {
+      items {
+        id
+        name
+        status
+        deadline
+      }
+      nextToken
+    }
+    arrivedOrders {
+      items {
+        id
+        name
+        status
+        deadline
+      }
+      nextToken
+    }
+  }
+}
+mutation UpdateLocation($input: UpdateLocationInput!) {
+  updateLocation(input: $input) {
+    id
+    name
+    sentOrders {
+      items {
+        id
+        name
+        status
+        deadline
+      }
+      nextToken
+    }
+    arrivedOrders {
+      items {
+        id
+        name
+        status
+        deadline
+      }
+      nextToken
+    }
+  }
+}
+mutation DeleteLocation($input: DeleteLocationInput!) {
+  deleteLocation(input: $input) {
+    id
+    name
+    sentOrders {
+      items {
+        id
+        name
+        status
+        deadline
+      }
+      nextToken
+    }
+    arrivedOrders {
+      items {
+        id
+        name
+        status
+        deadline
+      }
+      nextToken
+    }
+  }
+}
