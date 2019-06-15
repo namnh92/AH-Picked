@@ -20,3 +20,180 @@ query ListTodos(
     nextToken
   }
 }
+query GetUser($id: ID!) {
+  getUser(id: $id) {
+    id
+    firstName
+    familyName
+    email
+    password
+    sentOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+    receivedOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+  }
+}
+query ListUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    nextToken
+  }
+}
+query GetOrder($id: ID!) {
+  getOrder(id: $id) {
+    id
+    name
+    sentBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    receivedBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    sentFrom {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    sentTo {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    status
+  }
+}
+query ListOrders(
+  $filter: ModelOrderFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listOrders(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      sentBy {
+        id
+        firstName
+        familyName
+        email
+        password
+      }
+      receivedBy {
+        id
+        firstName
+        familyName
+        email
+        password
+      }
+      sentFrom {
+        id
+        name
+      }
+      sentTo {
+        id
+        name
+      }
+      status
+    }
+    nextToken
+  }
+}
+query GetLocation($id: ID!) {
+  getLocation(id: $id) {
+    id
+    name
+    sentOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+    arrivedOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+  }
+}
+query ListLocations(
+  $filter: ModelLocationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listLocations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    nextToken
+  }
+}

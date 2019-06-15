@@ -3,3 +3,37 @@ type Todo @model {
   name: String!
   description: String
 }
+
+type User @model {
+  id: ID!
+  firstName: String!
+  familyName: String!
+  email: AWSEmail!
+  password: String
+  sentOrders: [Order] @connection(name: "SenderOrders")
+  receivedOrders: [Order] @connection(name: "RecieverOrders")
+}
+
+type Order @model {
+  id: ID!
+  name: String!
+  sentBy: User @connection(name: "SenderOrders")
+  receivedBy: User @connection(name: "RecieverOrders")
+  sentFrom: Location @connection(name: "sentFromLocation")
+  sentTo: Location @connection(name: "sentToLocation")
+  status: OrderStatus
+}
+
+type Location @model {
+  id: ID!
+  name: String!
+  sentOrders: [Order] @connection(name: "sentFromLocation")
+  arrivedOrders: [Order] @connection(name: "sentToLocation")
+}
+
+enum OrderStatus {
+  registered
+  arrived
+  recieved
+  returned
+}

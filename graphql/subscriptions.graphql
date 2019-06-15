@@ -20,3 +20,303 @@ subscription OnDeleteTodo {
     description
   }
 }
+subscription OnCreateUser {
+  onCreateUser {
+    id
+    firstName
+    familyName
+    email
+    password
+    sentOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+    receivedOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+  }
+}
+subscription OnUpdateUser {
+  onUpdateUser {
+    id
+    firstName
+    familyName
+    email
+    password
+    sentOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+    receivedOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+  }
+}
+subscription OnDeleteUser {
+  onDeleteUser {
+    id
+    firstName
+    familyName
+    email
+    password
+    sentOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+    receivedOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+  }
+}
+subscription OnCreateOrder {
+  onCreateOrder {
+    id
+    name
+    sentBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    receivedBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    sentFrom {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    sentTo {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    status
+  }
+}
+subscription OnUpdateOrder {
+  onUpdateOrder {
+    id
+    name
+    sentBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    receivedBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    sentFrom {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    sentTo {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    status
+  }
+}
+subscription OnDeleteOrder {
+  onDeleteOrder {
+    id
+    name
+    sentBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    receivedBy {
+      id
+      firstName
+      familyName
+      email
+      password
+      sentOrders {
+        nextToken
+      }
+      receivedOrders {
+        nextToken
+      }
+    }
+    sentFrom {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    sentTo {
+      id
+      name
+      sentOrders {
+        nextToken
+      }
+      arrivedOrders {
+        nextToken
+      }
+    }
+    status
+  }
+}
+subscription OnCreateLocation {
+  onCreateLocation {
+    id
+    name
+    sentOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+    arrivedOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+  }
+}
+subscription OnUpdateLocation {
+  onUpdateLocation {
+    id
+    name
+    sentOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+    arrivedOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+  }
+}
+subscription OnDeleteLocation {
+  onDeleteLocation {
+    id
+    name
+    sentOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+    arrivedOrders {
+      items {
+        id
+        name
+        status
+      }
+      nextToken
+    }
+  }
+}
