@@ -8,11 +8,30 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+class MainVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        fetchData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    // MARK: - Data managements
+    private func fetchData() {
+        IndicatiorView.show()
+        appSyncClient?.fetch(query: ListTodosQuery(limit: 3))  { (result, error) in
+            IndicatiorView.hide()
+            if error != nil {
+                print(error?.localizedDescription ?? "")
+                return
+            }
+            result?.data?.listTodos?.items!.forEach { print(($0?.name)! + " " + ($0?.description)!) }
+        }
     }
 }

@@ -20,23 +20,11 @@ class BaseVC: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appSyncClient = appDelegate.appSyncClient
         
-        fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.pop(animated: animated)
+        super.viewWillAppear(animated)
         
         navigationController?.navigationBar.isHidden = false
-    }
-
-    // MARK: - Data managements
-    private func fetchData() {
-        appSyncClient?.fetch(query: ListTodosQuery())  { (result, error) in
-            if error != nil {
-                print(error?.localizedDescription ?? "")
-                return
-            }
-            result?.data?.listTodos?.items!.forEach { print(($0?.name)! + " " + ($0?.description)!) }
-        }
     }
 }

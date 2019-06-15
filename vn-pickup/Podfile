@@ -9,6 +9,9 @@ target 'vn-pickup' do
   pod 'AWSCore', '~> 2.9.6'
   pod 'AWSAppSync', ' ~> 2.13.0'
   
+  # Pods for Progress
+  pod 'SVProgressHUD'
+  
   # Used for interacting with keyboard
   pod 'IQKeyboardManagerSwift'
   

@@ -31,6 +31,7 @@
 		CB48287E22B4E01C002742D4 /* queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CB48287822B4E01C002742D4 /* queries.graphql */; };
 		CB48287F22B4E01C002742D4 /* mutations.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CB48287922B4E01C002742D4 /* mutations.graphql */; };
 		CB48288022B4E01C002742D4 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = CB48287A22B4E01C002742D4 /* schema.json */; };
+		CB48288722B4FBA8002742D4 /* IndicatiorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48288622B4FBA8002742D4 /* IndicatiorView.swift */; };
 		CBAEE78022B4C32600424752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAEE77F22B4C32600424752 /* AppDelegate.swift */; };
 		CBAEE78722B4C32700424752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBAEE78622B4C32700424752 /* Assets.xcassets */; };
 		CBAEE78A22B4C32700424752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBAEE78822B4C32700424752 /* LaunchScreen.storyboard */; };
@@ -63,6 +64,7 @@
 		CB48287822B4E01C002742D4 /* queries.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queries.graphql; sourceTree = "<group>"; };
 		CB48287922B4E01C002742D4 /* mutations.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mutations.graphql; sourceTree = "<group>"; };
 		CB48287A22B4E01C002742D4 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		CB48288622B4FBA8002742D4 /* IndicatiorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatiorView.swift; sourceTree = "<group>"; };
 		CBAEE77C22B4C32600424752 /* vn-pickup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vn-pickup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBAEE77F22B4C32600424752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBAEE78622B4C32700424752 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			children = (
 				CB48285A22B4D3E0002742D4 /* ShadowView.swift */,
 				CB48285C22B4D3F5002742D4 /* GradientView.swift */,
+				CB48288622B4FBA8002742D4 /* IndicatiorView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -265,6 +268,13 @@
 			path = ../../../graphql;
 			sourceTree = "<group>";
 		};
+		CB48288122B4FA75002742D4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		CBAEE77322B4C32600424752 = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +296,7 @@
 		CBAEE77E22B4C32600424752 /* vn-pickup */ = {
 			isa = PBXGroup;
 			children = (
+				CB48288122B4FA75002742D4 /* Networking */,
 				CB48287322B4E013002742D4 /* AWS */,
 				CB48286622B4D553002742D4 /* Constant */,
 				CB48285822B4D3A5002742D4 /* Libraries */,
@@ -423,6 +434,7 @@
 				CB48286C22B4D5A3002742D4 /* Colors.swift in Sources */,
 				CB48284922B4CA9D002742D4 /* MainVC.swift in Sources */,
 				CB48286022B4D453002742D4 /* GradientLayer.swift in Sources */,
+				CB48288722B4FBA8002742D4 /* IndicatiorView.swift in Sources */,
 				CB48285722B4D33E002742D4 /* UIView+Extension.swift in Sources */,
 				CB48284D22B4CAD8002742D4 /* SystemBoots.swift in Sources */,
 				CB48285422B4D108002742D4 /* LoginVC.swift in Sources */,

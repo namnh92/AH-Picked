@@ -9,11 +9,13 @@ PODS:
   - SQLite.swift (0.11.6):
     - SQLite.swift/standard (= 0.11.6)
   - SQLite.swift/standard (0.11.6)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - AWSAppSync (~> 2.13.0)
   - AWSCore (~> 2.9.6)
   - IQKeyboardManagerSwift
+  - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -22,6 +24,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - ReachabilitySwift
     - SQLite.swift
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   AWSAppSync: 6dd42e4c25ff01cfa652392bdc080bb9ec2b6d5f
@@ -29,7 +32,8 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   SQLite.swift: 46d890be8601964454bd3392527f863d1b802d45
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 75bf8cb19533e79a1ce5cf946b3caf77edb39740
+PODFILE CHECKSUM: 7f771ebdb3aceb081f0f8773629eda96fb89b806
 
 COCOAPODS: 1.7.0.beta.3
