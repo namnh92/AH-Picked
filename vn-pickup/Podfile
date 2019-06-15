@@ -5,6 +5,14 @@ target 'vn-pickup' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for vn-pickup
+  # Pods for AWS
   pod 'AWSCore', '~> 2.9.6'
+  pod 'AWSAppSync', ' ~> 2.13.0'
+  
+  # Pods for Progress
+  pod 'SVProgressHUD'
+  
+  # Used for interacting with keyboard
+  pod 'IQKeyboardManagerSwift'
+  
 end

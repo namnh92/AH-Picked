@@ -7,18 +7,45 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
+import AWSAppSync
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var appSyncClient: AWSAppSyncClient?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let mainVC = MainVC.create()
-        let nav = UINavigationController(rootViewController: mainVC)
+        let loginVC = LoginVC.create()
+        let nav = UINavigationController(rootViewController: loginVC)
         SystemBoots.sharedInstance.changeRoot(window: &window, rootController: nav)
+        
+        // Config iqkeyboard
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        
+        // Config AWS Sync
+        do {
+            // You can choose the directory in which AppSync stores its persistent cache databases
+//            let cacheConfiguration = try AWSAppSyncCacheConfiguration()
+            
+            // AppSync configuration & client initialization
+            let appSyncServiceConfig = try AWSAppSyncServiceConfig()
+            
+            let appSyncConfig = try AWSAppSyncClientConfiguration(appSyncServiceConfig: appSyncServiceConfig)
+            appSyncClient = try AWSAppSyncClient(appSyncConfig: appSyncConfig)
+            // Set id as the cache key for objects. See architecture section for details
+            appSyncClient?.apolloClient?.cacheKeyForObject = { $0["id"] }
+        } catch {
+            print("Error initializing appsync client. \(error)")
+        }
+        
+        //
+//        hideNaviBarBG()
+        
         return true
     }
 
@@ -44,6 +71,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    // MARK: - Private method
+    private func hideNaviBarBG() {
+        // Sets background to a blank/empty image
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        // Sets shadow (line below the bar) to a blank image
+        UINavigationBar.appearance().shadowImage = UIImage()
+        // Sets the translucent background color
+        UINavigationBar.appearance().backgroundColor = .clear
+        // Set translucent. (Default value is already true, so this can be removed if desired.)
+        UINavigationBar.appearance().isTranslucent = true
+    }
 }
 

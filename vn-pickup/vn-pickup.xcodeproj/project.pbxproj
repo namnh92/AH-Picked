@@ -13,6 +13,25 @@
 		CB48284A22B4CA9D002742D4 /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB48284822B4CA9D002742D4 /* MainVC.xib */; };
 		CB48284D22B4CAD8002742D4 /* SystemBoots.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48284C22B4CAD8002742D4 /* SystemBoots.swift */; };
 		CB48285022B4CD74002742D4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48284F22B4CD74002742D4 /* UIViewController+Extension.swift */; };
+		CB48285422B4D108002742D4 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48285222B4D108002742D4 /* LoginVC.swift */; };
+		CB48285522B4D108002742D4 /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB48285322B4D108002742D4 /* LoginVC.xib */; };
+		CB48285722B4D33E002742D4 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48285622B4D33E002742D4 /* UIView+Extension.swift */; };
+		CB48285B22B4D3E0002742D4 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48285A22B4D3E0002742D4 /* ShadowView.swift */; };
+		CB48285D22B4D3F5002742D4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48285C22B4D3F5002742D4 /* GradientView.swift */; };
+		CB48286022B4D453002742D4 /* GradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48285F22B4D453002742D4 /* GradientLayer.swift */; };
+		CB48286322B4D4CA002742D4 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48286222B4D4CA002742D4 /* UITableView+Extension.swift */; };
+		CB48286522B4D50E002742D4 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48286422B4D50E002742D4 /* UITableViewCell+Extension.swift */; };
+		CB48286822B4D568002742D4 /* EnumTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48286722B4D568002742D4 /* EnumTypes.swift */; };
+		CB48286A22B4D571002742D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48286922B4D571002742D4 /* Constants.swift */; };
+		CB48286C22B4D5A3002742D4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48286B22B4D5A3002742D4 /* Colors.swift */; };
+		CB48286F22B4D5E6002742D4 /* UIColor+Extentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48286E22B4D5E6002742D4 /* UIColor+Extentsion.swift */; };
+		CB48287B22B4E01C002742D4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48287422B4E01C002742D4 /* API.swift */; };
+		CB48287C22B4E01C002742D4 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = CB48287522B4E01C002742D4 /* awsconfiguration.json */; };
+		CB48287D22B4E01C002742D4 /* subscriptions.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CB48287722B4E01C002742D4 /* subscriptions.graphql */; };
+		CB48287E22B4E01C002742D4 /* queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CB48287822B4E01C002742D4 /* queries.graphql */; };
+		CB48287F22B4E01C002742D4 /* mutations.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CB48287922B4E01C002742D4 /* mutations.graphql */; };
+		CB48288022B4E01C002742D4 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = CB48287A22B4E01C002742D4 /* schema.json */; };
+		CB48288722B4FBA8002742D4 /* IndicatiorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48288622B4FBA8002742D4 /* IndicatiorView.swift */; };
 		CBAEE78022B4C32600424752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAEE77F22B4C32600424752 /* AppDelegate.swift */; };
 		CBAEE78722B4C32700424752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBAEE78622B4C32700424752 /* Assets.xcassets */; };
 		CBAEE78A22B4C32700424752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBAEE78822B4C32700424752 /* LaunchScreen.storyboard */; };
@@ -26,6 +45,26 @@
 		CB48284822B4CA9D002742D4 /* MainVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
 		CB48284C22B4CAD8002742D4 /* SystemBoots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemBoots.swift; sourceTree = "<group>"; };
 		CB48284F22B4CD74002742D4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		CB48285222B4D108002742D4 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		CB48285322B4D108002742D4 /* LoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
+		CB48285622B4D33E002742D4 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		CB48285A22B4D3E0002742D4 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		CB48285C22B4D3F5002742D4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		CB48285F22B4D453002742D4 /* GradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLayer.swift; sourceTree = "<group>"; };
+		CB48286222B4D4CA002742D4 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		CB48286422B4D50E002742D4 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		CB48286722B4D568002742D4 /* EnumTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTypes.swift; sourceTree = "<group>"; };
+		CB48286922B4D571002742D4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CB48286B22B4D5A3002742D4 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		CB48286E22B4D5E6002742D4 /* UIColor+Extentsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extentsion.swift"; sourceTree = "<group>"; };
+		CB48287022B4D7E0002742D4 /* Bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-header.h"; sourceTree = "<group>"; };
+		CB48287422B4E01C002742D4 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = ../../../API.swift; sourceTree = "<group>"; };
+		CB48287522B4E01C002742D4 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = awsconfiguration.json; path = ../../../awsconfiguration.json; sourceTree = "<group>"; };
+		CB48287722B4E01C002742D4 /* subscriptions.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = subscriptions.graphql; sourceTree = "<group>"; };
+		CB48287822B4E01C002742D4 /* queries.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queries.graphql; sourceTree = "<group>"; };
+		CB48287922B4E01C002742D4 /* mutations.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mutations.graphql; sourceTree = "<group>"; };
+		CB48287A22B4E01C002742D4 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		CB48288622B4FBA8002742D4 /* IndicatiorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatiorView.swift; sourceTree = "<group>"; };
 		CBAEE77C22B4C32600424752 /* vn-pickup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vn-pickup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBAEE77F22B4C32600424752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBAEE78622B4C32700424752 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,6 +105,7 @@
 		CB48283E22B4CA00002742D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CB48285122B4D0F2002742D4 /* Login */,
 				CB48284422B4CA79002742D4 /* Base */,
 				CB48284322B4CA64002742D4 /* Main */,
 			);
@@ -100,6 +140,7 @@
 				CBAEE77F22B4C32600424752 /* AppDelegate.swift */,
 				CBAEE78822B4C32700424752 /* LaunchScreen.storyboard */,
 				CBAEE78B22B4C32700424752 /* Info.plist */,
+				CB48287022B4D7E0002742D4 /* Bridging-header.h */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -132,9 +173,106 @@
 		CB48284E22B4CD60002742D4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				CB48284F22B4CD74002742D4 /* UIViewController+Extension.swift */,
+				CB48286D22B4D5D5002742D4 /* Controller */,
+				CB48286122B4D4AE002742D4 /* View */,
+				CB48286E22B4D5E6002742D4 /* UIColor+Extentsion.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		CB48285122B4D0F2002742D4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CB48285222B4D108002742D4 /* LoginVC.swift */,
+				CB48285322B4D108002742D4 /* LoginVC.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		CB48285822B4D3A5002742D4 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				CB48285E22B4D442002742D4 /* Layer */,
+				CB48285922B4D3B7002742D4 /* UI */,
+				CB48284B22B4CAC5002742D4 /* Services */,
+				CB48284E22B4CD60002742D4 /* Extension */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		CB48285922B4D3B7002742D4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CB48285A22B4D3E0002742D4 /* ShadowView.swift */,
+				CB48285C22B4D3F5002742D4 /* GradientView.swift */,
+				CB48288622B4FBA8002742D4 /* IndicatiorView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CB48285E22B4D442002742D4 /* Layer */ = {
+			isa = PBXGroup;
+			children = (
+				CB48285F22B4D453002742D4 /* GradientLayer.swift */,
+			);
+			path = Layer;
+			sourceTree = "<group>";
+		};
+		CB48286122B4D4AE002742D4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB48285622B4D33E002742D4 /* UIView+Extension.swift */,
+				CB48286222B4D4CA002742D4 /* UITableView+Extension.swift */,
+				CB48286422B4D50E002742D4 /* UITableViewCell+Extension.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB48286622B4D553002742D4 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				CB48286722B4D568002742D4 /* EnumTypes.swift */,
+				CB48286922B4D571002742D4 /* Constants.swift */,
+				CB48286B22B4D5A3002742D4 /* Colors.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		CB48286D22B4D5D5002742D4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB48284F22B4CD74002742D4 /* UIViewController+Extension.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CB48287322B4E013002742D4 /* AWS */ = {
+			isa = PBXGroup;
+			children = (
+				CB48287422B4E01C002742D4 /* API.swift */,
+				CB48287522B4E01C002742D4 /* awsconfiguration.json */,
+				CB48287622B4E01C002742D4 /* graphql */,
+			);
+			path = AWS;
+			sourceTree = "<group>";
+		};
+		CB48287622B4E01C002742D4 /* graphql */ = {
+			isa = PBXGroup;
+			children = (
+				CB48287722B4E01C002742D4 /* subscriptions.graphql */,
+				CB48287822B4E01C002742D4 /* queries.graphql */,
+				CB48287922B4E01C002742D4 /* mutations.graphql */,
+				CB48287A22B4E01C002742D4 /* schema.json */,
+			);
+			name = graphql;
+			path = ../../../graphql;
+			sourceTree = "<group>";
+		};
+		CB48288122B4FA75002742D4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		CBAEE77322B4C32600424752 = {
@@ -158,8 +296,10 @@
 		CBAEE77E22B4C32600424752 /* vn-pickup */ = {
 			isa = PBXGroup;
 			children = (
-				CB48284E22B4CD60002742D4 /* Extension */,
-				CB48284B22B4CAC5002742D4 /* Services */,
+				CB48288122B4FA75002742D4 /* Networking */,
+				CB48287322B4E013002742D4 /* AWS */,
+				CB48286622B4D553002742D4 /* Constant */,
+				CB48285822B4D3A5002742D4 /* Libraries */,
 				CB48284222B4CA2C002742D4 /* Application */,
 				CB48284122B4CA1F002742D4 /* Resouces */,
 				CB48284022B4CA18002742D4 /* Models */,
@@ -230,7 +370,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBAEE78A22B4C32700424752 /* LaunchScreen.storyboard in Resources */,
+				CB48287E22B4E01C002742D4 /* queries.graphql in Resources */,
+				CB48287C22B4E01C002742D4 /* awsconfiguration.json in Resources */,
 				CB48284A22B4CA9D002742D4 /* MainVC.xib in Resources */,
+				CB48287D22B4E01C002742D4 /* subscriptions.graphql in Resources */,
+				CB48288022B4E01C002742D4 /* schema.json in Resources */,
+				CB48285522B4D108002742D4 /* LoginVC.xib in Resources */,
+				CB48287F22B4E01C002742D4 /* mutations.graphql in Resources */,
 				CBAEE78722B4C32700424752 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,11 +430,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB48286322B4D4CA002742D4 /* UITableView+Extension.swift in Sources */,
+				CB48286C22B4D5A3002742D4 /* Colors.swift in Sources */,
 				CB48284922B4CA9D002742D4 /* MainVC.swift in Sources */,
+				CB48286022B4D453002742D4 /* GradientLayer.swift in Sources */,
+				CB48288722B4FBA8002742D4 /* IndicatiorView.swift in Sources */,
+				CB48285722B4D33E002742D4 /* UIView+Extension.swift in Sources */,
 				CB48284D22B4CAD8002742D4 /* SystemBoots.swift in Sources */,
+				CB48285422B4D108002742D4 /* LoginVC.swift in Sources */,
+				CB48285B22B4D3E0002742D4 /* ShadowView.swift in Sources */,
+				CB48286A22B4D571002742D4 /* Constants.swift in Sources */,
+				CB48286522B4D50E002742D4 /* UITableViewCell+Extension.swift in Sources */,
 				CB48284622B4CA8F002742D4 /* BaseVC.swift in Sources */,
 				CB48285022B4CD74002742D4 /* UIViewController+Extension.swift in Sources */,
+				CB48286F22B4D5E6002742D4 /* UIColor+Extentsion.swift in Sources */,
+				CB48286822B4D568002742D4 /* EnumTypes.swift in Sources */,
 				CBAEE78022B4C32600424752 /* AppDelegate.swift in Sources */,
+				CB48287B22B4E01C002742D4 /* API.swift in Sources */,
+				CB48285D22B4D3F5002742D4 /* GradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
