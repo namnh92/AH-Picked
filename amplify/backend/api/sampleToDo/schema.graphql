@@ -23,6 +23,7 @@ type Order @model {
   sentTo: Location @connection(name: "sentToLocation")
   status: OrderStatus
   deadline: AWSDateTime
+  arrivalDate: AWSDateTime
 }
 
 type Location @model {

@@ -33,6 +33,7 @@ subscription OnCreateUser {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -42,6 +43,7 @@ subscription OnCreateUser {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -60,6 +62,7 @@ subscription OnUpdateUser {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -69,6 +72,7 @@ subscription OnUpdateUser {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -87,6 +91,7 @@ subscription OnDeleteUser {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -96,6 +101,7 @@ subscription OnDeleteUser {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -155,6 +161,7 @@ subscription OnCreateOrder {
     }
     status
     deadline
+    arrivalDate
   }
 }
 subscription OnUpdateOrder {
@@ -211,6 +218,7 @@ subscription OnUpdateOrder {
     }
     status
     deadline
+    arrivalDate
   }
 }
 subscription OnDeleteOrder {
@@ -267,6 +275,7 @@ subscription OnDeleteOrder {
     }
     status
     deadline
+    arrivalDate
   }
 }
 subscription OnCreateLocation {
@@ -280,6 +289,7 @@ subscription OnCreateLocation {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -289,6 +299,7 @@ subscription OnCreateLocation {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -305,6 +316,7 @@ subscription OnUpdateLocation {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -314,6 +326,7 @@ subscription OnUpdateLocation {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -330,6 +343,7 @@ subscription OnDeleteLocation {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -339,6 +353,7 @@ subscription OnDeleteLocation {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
