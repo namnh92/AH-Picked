@@ -15,4 +15,7 @@ target 'vn-pickup' do
   # Used for interacting with keyboard
   pod 'IQKeyboardManagerSwift'
   
+  # Used for tabbar
+  pod 'ESTabBarController-swift'
+  
 end

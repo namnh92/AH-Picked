@@ -1,5 +1,5 @@
 //
-//  LoginVC.swift
+//  PaymentVC.swift
 //  vn-pickup
 //
 //  Created by Nguyễn Nam on 6/15/19.
@@ -8,23 +8,18 @@
 
 import UIKit
 
-class LoginVC: BaseVC {
+class PaymentVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.isHidden = true
-    }
-
-    @IBAction func invokeLoginButton(_ sender: UIButton) {
-        var window = UIApplication.shared.keyWindow
-        SystemBoots.sharedInstance.changeRoot(window: &window, rootController: RootTabBarController.instance)
     }
 
 }

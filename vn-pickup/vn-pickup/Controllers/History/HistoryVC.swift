@@ -1,5 +1,5 @@
 //
-//  LoginVC.swift
+//  HistoryVC.swift
 //  vn-pickup
 //
 //  Created by Nguyễn Nam on 6/15/19.
@@ -8,23 +8,20 @@
 
 import UIKit
 
-class LoginVC: BaseVC {
+class HistoryVC: BaseVC {
 
+    @IBOutlet weak var qrImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        qrImageView.generateQRImage(string: "demo")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.isHidden = true
-    }
-
-    @IBAction func invokeLoginButton(_ sender: UIButton) {
-        var window = UIApplication.shared.keyWindow
-        SystemBoots.sharedInstance.changeRoot(window: &window, rootController: RootTabBarController.instance)
     }
 
 }

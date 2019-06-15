@@ -16,6 +16,41 @@ class ShadowView: UIView {
     @IBInspectable var cornerTopRight: Bool = true
     @IBInspectable var cornerBottomLeft: Bool = true
     @IBInspectable var cornerBottomRight: Bool = true
+    @IBInspectable var shadowOffset: CGSize {
+        get {
+            return layer.shadowOffset
+        }
+        set(value) {
+            layer.shadowOffset = value
+        }
+    }
+    
+    @IBInspectable var shadowRadius: CGFloat {
+        get {
+            return layer.shadowRadius
+        }
+        set(value) {
+            layer.shadowRadius = value
+        }
+    }
+    
+    @IBInspectable var shadowOpacity: Float {
+        get {
+            return layer.shadowOpacity
+        }
+        set(value) {
+            layer.shadowOpacity = value
+        }
+    }
+    
+    @IBInspectable var shadowColor: UIColor {
+        get {
+            return UIColor(cgColor: layer.shadowColor ?? UIColor.clear.cgColor)
+        }
+        set(value) {
+            layer.shadowColor = value.cgColor
+        }
+    }
     
     // MARK: - Setup
     override func awakeFromNib() {
