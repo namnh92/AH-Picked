@@ -33,6 +33,7 @@ query GetUser($id: ID!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -42,6 +43,7 @@ query GetUser($id: ID!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -102,6 +104,7 @@ query GetOrder($id: ID!) {
     sentFrom {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -112,6 +115,7 @@ query GetOrder($id: ID!) {
     sentTo {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -121,6 +125,7 @@ query GetOrder($id: ID!) {
     }
     status
     deadline
+    arrivalDate
   }
 }
 query ListOrders(
@@ -149,13 +154,16 @@ query ListOrders(
       sentFrom {
         id
         name
+        address
       }
       sentTo {
         id
         name
+        address
       }
       status
       deadline
+      arrivalDate
     }
     nextToken
   }
@@ -164,12 +172,14 @@ query GetLocation($id: ID!) {
   getLocation(id: $id) {
     id
     name
+    address
     sentOrders {
       items {
         id
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -179,6 +189,7 @@ query GetLocation($id: ID!) {
         name
         status
         deadline
+        arrivalDate
       }
       nextToken
     }
@@ -193,6 +204,7 @@ query ListLocations(
     items {
       id
       name
+      address
       sentOrders {
         nextToken
       }

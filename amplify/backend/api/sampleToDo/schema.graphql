@@ -23,11 +23,13 @@ type Order @model {
   sentTo: Location @connection(name: "sentToLocation")
   status: OrderStatus
   deadline: AWSDateTime
+  arrivalDate: AWSDateTime
 }
 
 type Location @model {
   id: ID!
-  name: String!
+  name: String
+  address: String
   sentOrders: [Order] @connection(name: "sentFromLocation")
   arrivedOrders: [Order] @connection(name: "sentToLocation")
 }
