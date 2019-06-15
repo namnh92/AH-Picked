@@ -8,10 +8,5 @@
 			}
 		}
 	},
-	"auth": {
-		"authangelhack": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation"
-		}
-	}
+	"auth": {}
 }
