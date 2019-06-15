@@ -102,6 +102,7 @@ query GetOrder($id: ID!) {
     sentFrom {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -112,6 +113,7 @@ query GetOrder($id: ID!) {
     sentTo {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -149,10 +151,12 @@ query ListOrders(
       sentFrom {
         id
         name
+        address
       }
       sentTo {
         id
         name
+        address
       }
       status
       deadline
@@ -164,6 +168,7 @@ query GetLocation($id: ID!) {
   getLocation(id: $id) {
     id
     name
+    address
     sentOrders {
       items {
         id
@@ -193,6 +198,7 @@ query ListLocations(
     items {
       id
       name
+      address
       sentOrders {
         nextToken
       }

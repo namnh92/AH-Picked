@@ -134,6 +134,7 @@ subscription OnCreateOrder {
     sentFrom {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -144,6 +145,7 @@ subscription OnCreateOrder {
     sentTo {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -188,6 +190,7 @@ subscription OnUpdateOrder {
     sentFrom {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -198,6 +201,7 @@ subscription OnUpdateOrder {
     sentTo {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -242,6 +246,7 @@ subscription OnDeleteOrder {
     sentFrom {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -252,6 +257,7 @@ subscription OnDeleteOrder {
     sentTo {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -267,6 +273,7 @@ subscription OnCreateLocation {
   onCreateLocation {
     id
     name
+    address
     sentOrders {
       items {
         id
@@ -291,6 +298,7 @@ subscription OnUpdateLocation {
   onUpdateLocation {
     id
     name
+    address
     sentOrders {
       items {
         id
@@ -315,6 +323,7 @@ subscription OnDeleteLocation {
   onDeleteLocation {
     id
     name
+    address
     sentOrders {
       items {
         id

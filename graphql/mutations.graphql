@@ -134,6 +134,7 @@ mutation CreateOrder($input: CreateOrderInput!) {
     sentFrom {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -144,6 +145,7 @@ mutation CreateOrder($input: CreateOrderInput!) {
     sentTo {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -188,6 +190,7 @@ mutation UpdateOrder($input: UpdateOrderInput!) {
     sentFrom {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -198,6 +201,7 @@ mutation UpdateOrder($input: UpdateOrderInput!) {
     sentTo {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -242,6 +246,7 @@ mutation DeleteOrder($input: DeleteOrderInput!) {
     sentFrom {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -252,6 +257,7 @@ mutation DeleteOrder($input: DeleteOrderInput!) {
     sentTo {
       id
       name
+      address
       sentOrders {
         nextToken
       }
@@ -267,6 +273,7 @@ mutation CreateLocation($input: CreateLocationInput!) {
   createLocation(input: $input) {
     id
     name
+    address
     sentOrders {
       items {
         id
@@ -291,6 +298,7 @@ mutation UpdateLocation($input: UpdateLocationInput!) {
   updateLocation(input: $input) {
     id
     name
+    address
     sentOrders {
       items {
         id
@@ -315,6 +323,7 @@ mutation DeleteLocation($input: DeleteLocationInput!) {
   deleteLocation(input: $input) {
     id
     name
+    address
     sentOrders {
       items {
         id
