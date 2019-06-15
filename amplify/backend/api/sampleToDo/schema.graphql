@@ -27,7 +27,8 @@ type Order @model {
 
 type Location @model {
   id: ID!
-  name: String!
+  name: String
+  address: String
   sentOrders: [Order] @connection(name: "sentFromLocation")
   arrivedOrders: [Order] @connection(name: "sentToLocation")
 }
