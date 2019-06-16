@@ -119,7 +119,7 @@ class OrderDetailVC: BaseVC {
                 arriveDayLabel.text = "\(number)"
                 arriveTextLabel.text = "\(string)"
             }
-            orderStatusLabel.text = "Arrvie In".uppercased()
+            orderStatusLabel.text = "Arrive In".uppercased()
             orderStatusImage.isHidden  = true
         default:
             arriveCountdown.isHidden = true
