@@ -22,23 +22,11 @@ extension UIImageView {
         guard let qrImage = qrFilter.outputImage else { return }
         let transform = CGAffineTransform(scaleX: 10, y: 10)
         let scaledQrImage = qrImage.transformed(by: transform)
-        // Create the filter
-        guard let colorInvertFilter = CIFilter(name: "CIColorInvert") else { return }
-        // Set the input image to what we generated above
-        colorInvertFilter.setValue(scaledQrImage, forKey: "inputImage")
-        // Get the output CIImage
-        guard let outputInvertedImage = colorInvertFilter.outputImage else { return }
-        // Create the filter
-        guard let maskToAlphaFilter = CIFilter(name: "CIMaskToAlpha") else { return }
-        // Set the input image to the colorInvertFilter output
-        maskToAlphaFilter.setValue(outputInvertedImage, forKey: "inputImage")
-        // Get the output CIImage
-        guard let outputCIImage = maskToAlphaFilter.outputImage else { return }
-        // Get a CIContext
+//        // Get a CIContext
         let context = CIContext()
-        // Create a CGImage *from the extent of the outputCIImage*
-        guard let cgImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return }
-        // Finally, get a usable UIImage from the CGImage
+//        // Create a CGImage *from the extent of the outputCIImage*
+        guard let cgImage = context.createCGImage(scaledQrImage, from: scaledQrImage.extent) else { return }
+//        // Finally, get a usable UIImage from the CGImage
         image = UIImage(cgImage: cgImage)
     }
 

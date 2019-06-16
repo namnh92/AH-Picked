@@ -3,8 +3,18 @@ PODS:
     - AWSCore (~> 2.9.0)
     - ReachabilitySwift (= 4.3.0)
     - SQLite.swift (= 0.11.6)
+  - AWSAuthCore (2.9.8):
+    - AWSCore (= 2.9.8)
+  - AWSCognitoIdentityProvider (2.9.8):
+    - AWSCognitoIdentityProviderASF (= 1.0.1)
+    - AWSCore (= 2.9.8)
+  - AWSCognitoIdentityProviderASF (1.0.1)
   - AWSCore (2.9.8)
-  - ESTabBarController-swift (2.7)
+  - AWSMobileClient (2.9.8):
+    - AWSAuthCore (= 2.9.8)
+    - AWSCognitoIdentityProvider (= 2.9.8)
+  - AWSPinpoint (2.9.8):
+    - AWSCore (= 2.9.8)
   - IQKeyboardManagerSwift (6.3.0)
   - ReachabilitySwift (4.3.0)
   - SQLite.swift (0.11.6):
@@ -15,15 +25,20 @@ PODS:
 DEPENDENCIES:
   - AWSAppSync (~> 2.13.0)
   - AWSCore (~> 2.9.6)
-  - ESTabBarController-swift
+  - AWSMobileClient (~> 2.9.0)
+  - AWSPinpoint (~> 2.9.0)
   - IQKeyboardManagerSwift
   - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AWSAppSync
+    - AWSAuthCore
+    - AWSCognitoIdentityProvider
+    - AWSCognitoIdentityProviderASF
     - AWSCore
-    - ESTabBarController-swift
+    - AWSMobileClient
+    - AWSPinpoint
     - IQKeyboardManagerSwift
     - ReachabilitySwift
     - SQLite.swift
@@ -31,13 +46,17 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AWSAppSync: 6dd42e4c25ff01cfa652392bdc080bb9ec2b6d5f
+  AWSAuthCore: 7ebbe523f28149a1706e7ec1736203cdaaeba380
+  AWSCognitoIdentityProvider: 738b488930eca71cbaa91ac53764b146e90a6650
+  AWSCognitoIdentityProviderASF: f94f1a502e72ef3d0a1de93e10bf7a79c8698118
   AWSCore: 5da86c5afde44a87b06a2df50601bca81a8cee13
-  ESTabBarController-swift: 4fb52ad03d94d0717ef97bc9eb09a5abfdded0a2
+  AWSMobileClient: d3b6cbe30dcdb45866c85b0d088106504f72d4a3
+  AWSPinpoint: e9e2de634fc3270bbfb3f3b7b0c5aa748440b37f
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   SQLite.swift: 46d890be8601964454bd3392527f863d1b802d45
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: c5b86e09a62712711d657e5fd6f8b7ebabf8b965
+PODFILE CHECKSUM: e5612747c40e5185750b7c3c6ff1b072d2b2d783
 
 COCOAPODS: 1.7.0.beta.3

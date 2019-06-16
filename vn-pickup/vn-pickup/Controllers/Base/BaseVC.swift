@@ -32,6 +32,27 @@ class BaseVC: UIViewController {
     }
     
     func setupView() {
+        addBackNavigationBarbutton()
+    }
+    
+    private func addBackNavigationBarbutton() {
+        let backView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let backButton = UIButton(frame: backView.frame)
+        backButton.addTarget(self, action: #selector(invokeBackButton(_:)), for: .touchUpInside)
         
+        let backImageView = UIImageView(frame: CGRect(x: 0, y: 10, width: 28, height: 18))
+        backImageView.image = UIImage(named: "icon_back")
+        backView.addSubview(backImageView)
+        backView.addSubview(backButton)
+        
+        let backItem = UIBarButtonItem.init(customView: backView)
+        
+        let negativeSpacer = UIBarButtonItem.init(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        negativeSpacer.width = -25
+        navigationItem.leftBarButtonItems = [negativeSpacer, backItem]
+    }
+    
+    @objc private func invokeBackButton(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
 }

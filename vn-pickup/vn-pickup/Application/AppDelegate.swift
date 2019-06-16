@@ -9,18 +9,27 @@
 import UIKit
 import IQKeyboardManagerSwift
 import AWSAppSync
+import AWSCore
+import AWSPinpoint
+import AWSMobileClient
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var appSyncClient: AWSAppSyncClient?
+    /** start code copy **/
+    var pinpoint: AWSPinpoint?
+    /** end code copy **/
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let loginVC = LoginVC.create()
-        let nav = UINavigationController(rootViewController: loginVC)
-        SystemBoots.sharedInstance.changeRoot(window: &window, rootController: nav)
+//        let loginVC = LoginVC.create()
+//        let nav = UINavigationController(rootViewController: loginVC)
+//        SystemBoots.sharedInstance.changeRoot(window: &window, rootController: nav)
+        
+        SystemBoots.sharedInstance.changeRoot(window: &window, rootController: RootTabBarController.instance)
         
         // Config iqkeyboard
         IQKeyboardManager.shared.enable = true
@@ -43,8 +52,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Error initializing appsync client. \(error)")
         }
         
+        registerForPushNotifications()
+        
+        // Create AWSMobileClient to connect with AWS
+        AWSMobileClient.sharedInstance().initialize { (userState, error) in
+            if let error = error {
+                print("Error initializing AWSMobileClient: \(error.localizedDescription)")
+            } else if let userState = userState {
+                print("AWSMobileClient initialized. Current UserState: \(userState.rawValue)")
+            }
+        }
+        
+        // Initialize Pinpoint
+        let pinpointConfiguration = AWSPinpointConfiguration.defaultPinpointConfiguration(launchOptions: launchOptions)
+        pinpoint = AWSPinpoint(configuration: pinpointConfiguration)
         //
-//        hideNaviBarBG()
+        hideNaviBarBG()
         
         return true
     }
@@ -82,5 +105,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set translucent. (Default value is already true, so this can be removed if desired.)
         UINavigationBar.appearance().isTranslucent = true
     }
+    
+    func application(
+        _ application: UIApplication,
+        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        pinpoint!.notificationManager.interceptDidRegisterForRemoteNotifications(
+            withDeviceToken: deviceToken)
+    }
+    
+    func application(
+        _ application: UIApplication,
+        didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+        fetchCompletionHandler completionHandler:
+        @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        pinpoint!.notificationManager.interceptDidReceiveRemoteNotification(
+            userInfo, fetchCompletionHandler: completionHandler)
+        
+        if (application.applicationState == .active) {
+            let alert = UIAlertController(title: "Notification Received",
+                                          message: userInfo.description,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            
+            UIApplication.shared.keyWindow?.rootViewController?.present(
+                alert, animated: true, completion:nil)
+        }
+    }
+    
+    // Request user to grant permissions for the app to use notifications
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            print("Permission granted: \(granted)")
+            // 1. Check if permission granted
+            guard granted else { return }
+            // 2. Attempt registration for remote notifications on the main thread
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
 }
 

@@ -41,7 +41,7 @@ class MainVC: BaseVC {
     // MARK: - Data managements
     private func fetchData() {
         IndicatiorView.show()
-        appSyncClient?.fetch(query: ListOrdersQuery(), cachePolicy: .fetchIgnoringCacheData) {[weak self] (result, error) in
+        appSyncClient?.fetch(query: ListOrdersQuery(), cachePolicy: .returnCacheDataAndFetch) {[weak self] (result, error) in
             IndicatiorView.hide()
             guard let sSelf = self else { return }
             if error != nil {
@@ -85,6 +85,11 @@ extension MainVC: UITableViewDataSource {
 extension MainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        OrderDetailVC.present()
+        guard let item = listOrders?.items?[indexPath.row] else { return }
+        hidesBottomBarWhenPushed = true
+        OrderDetailVC.push(prepare: { vc in
+            vc.item = item
+        })
+        hidesBottomBarWhenPushed = false
     }
 }

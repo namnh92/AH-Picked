@@ -15,7 +15,7 @@ target 'vn-pickup' do
   # Used for interacting with keyboard
   pod 'IQKeyboardManagerSwift'
   
-  # Used for tabbar
-  pod 'ESTabBarController-swift'
+  pod  'AWSPinpoint', '~> 2.9.0'
+  pod  'AWSMobileClient', '~> 2.9.0'
   
 end
