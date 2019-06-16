@@ -1,0 +1,29 @@
+{
+    "identityPoolName": "ah_picked_identitypool_53761785",
+    "allowUnauthenticatedIdentities": true,
+    "lambdaLogPolicy": "ah_pic_53761785_lambda_log_policy",
+    "openIdLambdaRoleName": "ah_pic_53761785_openid_lambda_role",
+    "openIdRolePolicy": "ah_pic_53761785_openid_pass_role_policy",
+    "openIdLambdaIAMPolicy": "ah_pic_53761785_openid_lambda_iam_policy",
+    "openIdLogPolicy": "ah_pic_53761785_openid_lambda_log_policy",
+    "authSelections": "identityPoolOnly",
+    "resourceName": "cognito1ecac56e",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    },
+    "unauthRoleArn": {
+        "Fn::GetAtt": [
+            "UnauthRole",
+            "Arn"
+        ]
+    }
+}
