@@ -821,7 +821,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "vn-pickup/vn-pickup.entitlements";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4NX8T6CSL5;
 				INFOPLIST_FILE = "$(SRCROOT)/vn-pickup/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -831,8 +832,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "oh.we.vn-pickup";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = VNPickedUP;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -842,7 +844,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "vn-pickup/vn-pickup.entitlements";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4NX8T6CSL5;
 				INFOPLIST_FILE = "$(SRCROOT)/vn-pickup/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -852,8 +855,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "oh.we.vn-pickup";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = VNPickedUP;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
