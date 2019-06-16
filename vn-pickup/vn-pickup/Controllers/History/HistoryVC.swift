@@ -10,12 +10,9 @@ import UIKit
 
 class HistoryVC: BaseVC {
 
-    @IBOutlet weak var qrImageView: UIImageView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        qrImageView.generateQRImage(string: "demo")
     }
     
     override func viewWillAppear(_ animated: Bool) {

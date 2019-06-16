@@ -69,6 +69,7 @@
 		CB9DAAB622B555A10081513E /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAAA322B555A10081513E /* Poppins-Italic.ttf */; };
 		CB9DAAB722B555A10081513E /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB9DAAA422B555A10081513E /* Poppins-MediumItalic.ttf */; };
 		CB9DAAB922B5576A0081513E /* DashLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9DAAB822B5576A0081513E /* DashLineView.swift */; };
+		CB9DAABB22B571400081513E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9DAABA22B571400081513E /* Date+Extension.swift */; };
 		CBAEE78022B4C32600424752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAEE77F22B4C32600424752 /* AppDelegate.swift */; };
 		CBAEE78722B4C32700424752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBAEE78622B4C32700424752 /* Assets.xcassets */; };
 		CBAEE78A22B4C32700424752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBAEE78822B4C32700424752 /* LaunchScreen.storyboard */; };
@@ -140,6 +141,7 @@
 		CB9DAAA322B555A10081513E /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		CB9DAAA422B555A10081513E /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		CB9DAAB822B5576A0081513E /* DashLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashLineView.swift; sourceTree = "<group>"; };
+		CB9DAABA22B571400081513E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		CBAEE77C22B4C32600424752 /* vn-pickup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vn-pickup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBAEE77F22B4C32600424752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBAEE78622B4C32700424752 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				CB48286D22B4D5D5002742D4 /* Controller */,
 				CB48286122B4D4AE002742D4 /* View */,
 				CB48286E22B4D5E6002742D4 /* UIColor+Extentsion.swift */,
+				CB9DAABA22B571400081513E /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -529,6 +532,9 @@
 					CBAEE77B22B4C32600424752 = {
 						CreatedOnToolsVersion = 10.2.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -658,6 +664,7 @@
 				CB48284D22B4CAD8002742D4 /* SystemBoots.swift in Sources */,
 				CB48289F22B52D81002742D4 /* PaymentVC.swift in Sources */,
 				CB48285422B4D108002742D4 /* LoginVC.swift in Sources */,
+				CB9DAABB22B571400081513E /* Date+Extension.swift in Sources */,
 				CB48289422B527DD002742D4 /* HistoryVC.swift in Sources */,
 				CB48285B22B4D3E0002742D4 /* ShadowView.swift in Sources */,
 				CB48286A22B4D571002742D4 /* Constants.swift in Sources */,
