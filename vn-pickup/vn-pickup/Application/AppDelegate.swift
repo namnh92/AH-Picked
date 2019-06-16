@@ -52,7 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Error initializing appsync client. \(error)")
         }
         
-        registerForPushNotifications()
         
         // Create AWSMobileClient to connect with AWS
         AWSMobileClient.sharedInstance().initialize { (userState, error) in
@@ -68,6 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pinpoint = AWSPinpoint(configuration: pinpointConfiguration)
         //
         hideNaviBarBG()
+        
+        registerForPushNotifications()
         
         return true
     }
@@ -109,7 +110,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        
+        let profile: AWSPinpointEndpointProfile = (pinpoint?.targetingClient.currentEndpointProfile())!
+        print("EndpointId: \(profile.endpointId)")
         pinpoint!.notificationManager.interceptDidRegisterForRemoteNotifications(
             withDeviceToken: deviceToken)
     }
@@ -124,13 +126,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userInfo, fetchCompletionHandler: completionHandler)
         
         if (application.applicationState == .active) {
-            let alert = UIAlertController(title: "Notification Received",
-                                          message: userInfo.description,
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            
-            UIApplication.shared.keyWindow?.rootViewController?.present(
-                alert, animated: true, completion:nil)
+            if let aps = userInfo["aps"] as? NSDictionary {
+                if let alert = aps["alert"] as? NSDictionary {
+                    if let messageTitle = alert["title"] as? String,
+                        let messageContent = alert["body"] as? String {
+                        let alert = UIAlertController(title: messageTitle as String,
+                                                      message: messageContent,
+                                                      preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
+//                            OrderDetailVC.push(prepare: { vc in
+//                                vc.orderId = "19f54737-5681-45d4-82ed-0a2db22a16a3"
+//                            })
+                        }))
+                        
+                        UIApplication.shared.keyWindow?.rootViewController?.present(
+                            alert, animated: true, completion:nil)
+                    }
+                    
+                    
+                } else if let alert = aps["alert"] as? String {
+                    //Do stuff
+                }
+            }
+        } else {
+//            OrderDetailVC.push(prepare: { vc in
+//                vc.orderId = "19f54737-5681-45d4-82ed-0a2db22a16a3"
+//            })
         }
     }
     

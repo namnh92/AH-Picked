@@ -25,14 +25,21 @@ class OrderDetailVC: BaseVC {
     
     // MARK: - Variables
     var item: ListOrdersQuery.Data.ListOrder.Item!
+    var orderId: String?
     private var onUpdateOrder: OnUpdateOrderSubscription.Data.OnUpdateOrder?
+    private var getOrder: GetOrderQuery.Data.GetOrder?
     
     // MARK: - Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "#\(item.id)"
+        if let orderId = orderId {
+            title = "#\(orderId)"
+        } else {
+            title = "#\(item.id)"
+        }
         subcribe()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,8 +50,27 @@ class OrderDetailVC: BaseVC {
     override func setupView() {
         super.setupView()
         
+        if let orderId = orderId {
+            getOrderDetail(orderId: orderId)
+        } else {
+            qrImageView.generateQRImage(string: "demodata")
+            
+            if let sentBy = item.sentBy {
+                senderID.text = "@\(sentBy.id)"
+            }
+            
+            if let address = item.sentTo?.address {
+                addressLabel.text = address
+            }
+            
+            if let status = item.status {
+                handleViewByStatus(status: status)
+            }
+        }
+    }
+    
+    private func updateView(item: OnUpdateOrderSubscription.Data.OnUpdateOrder) {
         qrImageView.generateQRImage(string: "demodata")
-        
         if let sentBy = item.sentBy {
             senderID.text = "@\(sentBy.id)"
         }
@@ -58,7 +84,7 @@ class OrderDetailVC: BaseVC {
         }
     }
     
-    private func updateView(item: OnUpdateOrderSubscription.Data.OnUpdateOrder) {
+    private func updateView(getOrder item: GetOrderQuery.Data.GetOrder) {
         qrImageView.generateQRImage(string: "demodata")
         if let sentBy = item.sentBy {
             senderID.text = "@\(sentBy.id)"
@@ -105,6 +131,21 @@ class OrderDetailVC: BaseVC {
     }
 
     // MARK: - Management datas
+    private func getOrderDetail(orderId: String) {
+        IndicatiorView.show()
+        appSyncClient?.fetch(query: GetOrderQuery(id: orderId), cachePolicy: .returnCacheDataAndFetch) {[weak self] (result, error) in
+            IndicatiorView.hide()
+            guard let sSelf = self else { return }
+            if error != nil {
+                print(error?.localizedDescription ?? "")
+                return
+            }
+            if let getOrder = result?.data?.getOrder {
+                sSelf.updateView(getOrder: getOrder)
+            }
+        }
+    }
+    
     private func subcribe() {
         do {
             discard = try appSyncClient?.subscribe(subscription: OnUpdateOrderSubscription(), resultHandler: {[weak self] (result, transaction, error) in

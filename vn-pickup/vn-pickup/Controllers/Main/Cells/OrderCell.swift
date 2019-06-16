@@ -28,11 +28,11 @@ class OrderCell: UITableViewCell {
                 if Date() > date {
                     statusLabel.text = item.status?.rawValue.uppercased()
                 } else {
-                    statusLabel.text = "Arrive in \(date.timeAgoSinceDate())"
+                    statusLabel.text = "Arrive in \(date.timeAgoSinceDate())".uppercased()
                 }
             }
         } else {
-            statusLabel.text = "Arrived"
+            statusLabel.text = "Arrived".uppercased()
         }
         
         if let sendTo = item.sentTo {
